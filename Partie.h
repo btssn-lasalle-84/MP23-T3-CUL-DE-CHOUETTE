@@ -1,6 +1,3 @@
-#ifndef PARTIE_H
-    #define PARTIE_H
-#endif // !PARTIE_H #define PARTIE_H
 #include <iostream>
 
 class Partie
