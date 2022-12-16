@@ -1,3 +1,6 @@
+#ifndef JOUEUR_H
+#define JOUEUR_H
+
 #include <iostream>
 #include <vector>
 
@@ -13,3 +16,4 @@ class Joueur
     Joueur();
     Joueur(std::string nomDuJoueur);
 };
+#endif
