@@ -1,4 +1,5 @@
-#include "Partie.h"
+#ifndef IHM_H
+#define IHM_H
 
 class Partie;
 
@@ -11,3 +12,4 @@ class Ihm
     Ihm();
     ~Ihm();
 };
+#endif
