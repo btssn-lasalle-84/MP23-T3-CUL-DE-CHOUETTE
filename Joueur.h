@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 #define NOMBRE_DE_DES 3
 #define NOMBRE_DE_POINTS 343
@@ -19,3 +20,4 @@ class Joueur
     Joueur();
     Joueur(std::string nomDuJoueur);
 };
+#endif
