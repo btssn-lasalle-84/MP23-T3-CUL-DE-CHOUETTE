@@ -10,5 +10,5 @@ class Partie
 
   public:
     Partie();
-    Partie(int nombreDeJoueurs, std::string difficulte, int numeroDeTour);
+    Partie(int nombreDeJoueurs);
 };
