@@ -1,5 +1,5 @@
 #ifndef DE_H
-  #define DE_H
+#define DE_H
 #include <iostream>
 
 class De
@@ -13,4 +13,5 @@ class De
     De();
     De(int valeur, unsigned int nombreDeFace, int valeurTotale);
 };
+
 #endif // !DES_H
