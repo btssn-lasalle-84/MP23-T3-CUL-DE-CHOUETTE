@@ -1,4 +1,4 @@
-TARGET = culDeChouette.out
+TARGET = culDeChouette
 DE = De
 PARTIE = Partie
 JOUEUR = Joueur
@@ -11,10 +11,13 @@ CXX = g++ $(CFLAGS) -c
 LD = g++
 RM = rm -f
 
-all: $(TARGET)
+all: $(TARGET).out
 
-$(TARGET): $(DE).o $(PARTIE).o $(JOUEUR).o $(IHM).o
+$(TARGET).out: $(TARGET).o $(DE).o $(PARTIE).o $(JOUEUR).o $(IHM).o
 	$(LD) -o $@ $^
+
+$(TARGET).o: $(TARGET).cpp $(PARTIE).h
+	$(CXX) $<
 
 $(DE).o: $(DE).cpp $(DE).h
 	$(CXX) $<
@@ -43,4 +46,4 @@ clean:
 	$(RM) *.o
 
 cleanall:
-	$(RM) *.o* *.*~ $(TARGET)
+	$(RM) *.o* *.*~ $(TARGET).out
