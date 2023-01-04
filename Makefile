@@ -1,14 +1,32 @@
-TARGET = 
+TARGET = culDeChouette.out
+DE = De
+PARTIE = Partie
+JOUEUR = Joueur
+IHM = Ihm
 SOURCES := $(wildcard *.cpp)
 HEADERS := $(wildcard *.h)
 
 CFLAGS = -std=c++11 -Wall -I.
-CXX = g++ $(CFLAGS) -c 
+CXX = g++ $(CFLAGS) -c
 LD = g++
 RM = rm -f
 
-# TODO
+all: $(TARGET)
 
+$(TARGET): $(DE).o $(PARTIE).o $(JOUEUR).o $(IHM).o
+	$(LD) $@ $(LDFLAGS) $^
+
+$(DE).o: $(DE).cpp $(DE).h
+	$(CXX) $(CFLAGS) $<
+
+$(PARTIE).o: $(PARTIE).cpp $(PARTIE).h
+	$(CXX) $(CFLAGS) $<
+
+$(JOUEUR).o: $(JOUEUR).cpp $(JOUEUR).h
+	$(CXX) $(CFLAGS) $<
+
+$(IHM).o: $(IHM).cpp $(IHM).h
+	$(CXX) $(CFLAGS) $<
 
 .PHONY: check cppcheck format clean cleanall
 
