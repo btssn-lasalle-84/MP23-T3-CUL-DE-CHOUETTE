@@ -7,7 +7,7 @@
 #define DIFFICULTE_PAR_DEFAUT 0
 #define NB_JOUEURS_PAR_DEFAUT 2
 
- enum difficulte
+enum difficulte
     {
       normal = 0,
       difficile = 1,
