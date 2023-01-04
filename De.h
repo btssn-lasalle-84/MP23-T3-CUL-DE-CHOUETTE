@@ -8,9 +8,9 @@
 class De
 {
   private:
-    int valeur;
+    int          valeur;
     unsigned int nombreDeFace;
-    int valeurTotale;
+    int          valeurTotale;
 
   public:
     De();
