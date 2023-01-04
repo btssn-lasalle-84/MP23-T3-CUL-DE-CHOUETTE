@@ -13,6 +13,7 @@
       difficile = 1,
       extreme = 2
     };
+
 class Partie
 {
   private:
