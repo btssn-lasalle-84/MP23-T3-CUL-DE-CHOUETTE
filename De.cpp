@@ -1,9 +1,5 @@
 #include "De.h"
 
-De::De()
-{
-}
-
-De::De(int valeur, unsigned int nombreDeFace, int valeurTotale) : valeur(valeur), nombreDeFace(nombreDeFace), valeurTotale(valeurTotale)
+De::De() : valeur(0), nombreDeFace(NOMBRE_DE_FACE), valeurTotale(0)
 {
 }
