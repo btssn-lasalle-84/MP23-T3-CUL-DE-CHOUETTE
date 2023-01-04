@@ -1,12 +1,12 @@
 #include "Partie.h"
 
-Partie::Partie() : objectifNombre(OBJECTIF_PAR_DEFAUT), difficulte(DIFFICULTE_PAR_DEFAUT), nombreDeJoueurs(NB_JOUEURS_PAR_DEFAUT), numeroDeTour(0)
+Partie::Partie() : objectifNombre(OBJECTIF_PAR_DEFAUT), difficulteDeLaPartie(normal), nombreDeJoueurs(NB_JOUEURS_PAR_DEFAUT), numeroDeTour(0)
 {
 }
 
-Partie::Partie(int nombreDeJoueurs, unsigned int difficulte, int objectifNombre) : nombreDeJoueurs(nombreDeJoueurs),
+Partie::Partie(int nombreDeJoueurs, difficulte difficulteDeLaPartie , int objectifNombre) : nombreDeJoueurs(nombreDeJoueurs),
                                                                                    objectifNombre(objectifNombre),
-                                                                                   difficulte(difficulte),
+                                                                                   difficulteDeLaPartie(difficulteDeLaPartie),
                                                                                    numeroDeTour(0)
 {
 }
