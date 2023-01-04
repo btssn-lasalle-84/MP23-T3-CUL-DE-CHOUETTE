@@ -14,19 +14,19 @@ RM = rm -f
 all: $(TARGET)
 
 $(TARGET): $(DE).o $(PARTIE).o $(JOUEUR).o $(IHM).o
-	$(LD) $@ $(LDFLAGS) $^
+	$(LD) -o $@ $^
 
 $(DE).o: $(DE).cpp $(DE).h
-	$(CXX) $(CFLAGS) $<
+	$(CXX) $<
 
 $(PARTIE).o: $(PARTIE).cpp $(PARTIE).h
-	$(CXX) $(CFLAGS) $<
+	$(CXX) $<
 
 $(JOUEUR).o: $(JOUEUR).cpp $(JOUEUR).h
-	$(CXX) $(CFLAGS) $<
+	$(CXX) $<
 
 $(IHM).o: $(IHM).cpp $(IHM).h
-	$(CXX) $(CFLAGS) $<
+	$(CXX) $<
 
 .PHONY: check cppcheck format clean cleanall
 
