@@ -6,7 +6,7 @@ De::De(unsigned int nombreDeFaces /*= NOMBRE_DE_FACES*/) :
 {
 }
 
-int De::getValeurDe()
+int De::getValeurDe() const
 {
     std::cout << this->valeur << std::endl;
     return this->valeur;
@@ -16,5 +16,5 @@ void De::lancerDe()
 {
     std::random_device                 nombre;
     std::uniform_int_distribution<int> generer(NOMBRE_MIN_DE, NOMBRE_MAX_DE);
-    this->valeur = generer(nombre);
+    valeur = generer(nombre);
 }
