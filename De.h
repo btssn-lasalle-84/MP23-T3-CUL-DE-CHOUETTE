@@ -18,7 +18,6 @@ class De
   public:
     De(unsigned int nombreDeFaces = NOMBRE_DE_FACES);
 
-    // méthodes
     int  getValeurDe();
     void lancerDe();
 };
