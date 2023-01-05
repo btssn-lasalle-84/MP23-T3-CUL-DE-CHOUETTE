@@ -3,6 +3,11 @@
 
 #include <iostream>
 #include <iomanip>
+#include <string>
+#include <unistd.h>
+
+#define VITESSE_DEFILEMENT_TEXTE 8
+
 class Ihm
 {
   private:
