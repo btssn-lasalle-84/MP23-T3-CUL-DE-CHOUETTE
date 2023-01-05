@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <cmath>
 
 #define NOMBRE_DE_DES    3
 #define NOMBRE_DE_POINTS 0
@@ -18,6 +19,10 @@ class Joueur
 
   public:
     Joueur(std::string nomDuJoueur = "");
+    unsigned int const getScore();
+    std::string const  getNomJoueur();
+    void               setScore();
+    void               setNomduJoueur(std::string nomDuJoueur);
 };
 
 #endif
