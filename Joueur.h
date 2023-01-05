@@ -8,6 +8,8 @@
 #define NOMBRE_DE_DES    3
 #define NOMBRE_DE_POINTS 0
 
+#define DEBUG_JOUEUR
+
 class De;
 
 class Joueur
@@ -21,8 +23,9 @@ class Joueur
     Joueur(std::string nomDuJoueur = "");
     unsigned int const getScore();
     std::string const  getNomJoueur();
-    void               setScore();
-    void               setNomduJoueur(std::string nomDuJoueur);
+    void               lancerDes();
+    void               setNomduJoueur(std::string const nomDuJoueur);
+    int                getRegleChouette();
 };
 
 #endif
