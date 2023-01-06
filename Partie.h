@@ -21,16 +21,16 @@ class Partie
 {
   private:
     unsigned int       nombreDeJoueurs;
-    int                objectifNombre;
+    unsigned int       objectifNombre;
     Difficulte         difficulte;
-    int                numeroDeTour;
+    unsigned int       numeroDeTour;
     std::list<Joueur*> joueurs;
     Ihm*               ihm;
 
   public:
     Partie(unsigned int nombreDeJoueurs = NB_JOUEURS_PAR_DEFAUT,
            Difficulte   difficulte      = Difficulte::Normal,
-           int          objectifNombre  = OBJECTIF_PAR_DEFAUT);
+           unsigned int objectifNombre  = OBJECTIF_PAR_DEFAUT);
     ~Partie();
     void jouer();
 };
