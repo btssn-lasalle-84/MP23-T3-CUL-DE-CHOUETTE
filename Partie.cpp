@@ -8,7 +8,7 @@
 
 Partie::Partie(unsigned int nombreDeJoueurs /*= NB_JOUEURS_PAR_DEFAUT*/,
                Difficulte   difficulte /*= Difficulte::Normal*/,
-               int          objectifNombre /*= OBJECTIF_PAR_DEFAUT*/) :
+               unsigned int objectifNombre /*= OBJECTIF_PAR_DEFAUT*/) :
     nombreDeJoueurs(nombreDeJoueurs),
     objectifNombre(objectifNombre), difficulte(difficulte), numeroDeTour(0),
     ihm(new Ihm())
@@ -42,4 +42,14 @@ void Partie::jouer()
 #endif
         (*joueur)->lancerDes();
     }
+}
+
+unsigned int Partie::getObjectifNombre() const
+{
+    return objectifNombre;
+}
+
+unsigned int Partie::getNumeroDeTour() const
+{
+    return numeroDeTour;
 }
