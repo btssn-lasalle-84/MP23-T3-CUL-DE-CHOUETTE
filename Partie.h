@@ -5,6 +5,7 @@
 
 #define OBJECTIF_PAR_DEFAUT   343
 #define NB_JOUEURS_PAR_DEFAUT 2
+#define DEBUG_PARTIE
 
 enum Difficulte
 {
@@ -19,7 +20,7 @@ class Ihm;
 class Partie
 {
   private:
-    int                nombreDeJoueurs;
+    unsigned int       nombreDeJoueurs;
     int                objectifNombre;
     Difficulte         difficulte;
     int                numeroDeTour;
@@ -27,10 +28,11 @@ class Partie
     Ihm*               ihm;
 
   public:
-    Partie(int        nombreDeJoueurs = NB_JOUEURS_PAR_DEFAUT,
-           Difficulte difficulte      = Difficulte::Normal,
-           int        objectifNombre  = OBJECTIF_PAR_DEFAUT);
+    Partie(unsigned int nombreDeJoueurs = NB_JOUEURS_PAR_DEFAUT,
+           Difficulte   difficulte      = Difficulte::Normal,
+           int          objectifNombre  = OBJECTIF_PAR_DEFAUT);
     ~Partie();
+    void jouer();
 };
 
 #endif // !PARTIE_H
