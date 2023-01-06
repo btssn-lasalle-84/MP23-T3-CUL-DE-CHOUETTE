@@ -1,18 +1,41 @@
 #include "Joueur.h"
 #include "De.h"
 
+#ifdef DEBUG_JOUEUR
+#include <iostream>
+#endif
+
 Joueur::Joueur(std::string nomDuJoueur) :
-    nomDuJoueur(nomDuJoueur), des(NOMBRE_DE_DES, new De()),
-    compteurDePoints(NOMBRE_DE_POINTS)
+    nomDuJoueur(nomDuJoueur), compteurDePoints(NOMBRE_DE_POINTS)
 {
+#ifdef DEBUG_JOUEUR
+    std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__ << " " << this
+              << std::endl;
+#endif
+    for(size_t i = 0; i < NOMBRE_DE_DES; i++)
+    {
+        des.push_back(new De());
+    }
 }
 
-unsigned int const Joueur::getScore()
+Joueur::~Joueur()
+{
+    for(size_t i = 0; i < des.size(); i++)
+    {
+        delete des[i];
+    }
+#ifdef DEBUG_JOUEUR
+    std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__ << " " << this
+              << std::endl;
+#endif
+}
+
+unsigned int Joueur::getScore() const
 {
     return this->compteurDePoints;
 }
 
-std::string const Joueur::getNomJoueur()
+std::string Joueur::getNomJoueur() const
 {
     return this->nomDuJoueur;
 }
@@ -28,4 +51,10 @@ void Joueur::lancerDes()
     {
         des[i]->lancerDe();
     }
+#ifdef DEBUG_JOUEUR
+    for(size_t i = 0; i < des.size(); i++)
+    {
+        this->des[i]->getValeurDe();
+    }
+#endif
 }
