@@ -32,7 +32,9 @@ class Partie
            Difficulte   difficulte      = Difficulte::Normal,
            unsigned int objectifNombre  = OBJECTIF_PAR_DEFAUT);
     ~Partie();
-    void jouer();
+    void         jouer();
+    unsigned int getObjectifNombre() const;
+    unsigned int getNumeroDeTour() const;
 };
 
 #endif // !PARTIE_H

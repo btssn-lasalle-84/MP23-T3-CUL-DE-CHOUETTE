@@ -43,3 +43,13 @@ void Partie::jouer()
         (*joueur)->lancerDes();
     }
 }
+
+unsigned int Partie::getObjectifNombre() const
+{
+    return objectifNombre;
+}
+
+unsigned int Partie::getNumeroDeTour() const
+{
+    return numeroDeTour;
+}
