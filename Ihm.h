@@ -3,6 +3,8 @@
 
 #define VITESSE_DEFILEMENT_TEXTE 8
 
+class Joueur;
+
 class Ihm
 {
   private:
@@ -12,9 +14,9 @@ class Ihm
 
     void afficherRegle() const;
     void afficherMenuPrincipal() const;
-    void afficherNomDuJoueur() const;
-    void afficherLancerDe() const;
-    void afficherScoreDuJoueur() const;
+    void afficherNomDuJoueur(const Joueur& joueur) const;
+    void afficherResultatLanceDes(unsigned int total) const;
+    void afficherScoreDuJoueur(const Joueur& joueur) const;
 };
 
-#endif
+#endif // IHM_H
