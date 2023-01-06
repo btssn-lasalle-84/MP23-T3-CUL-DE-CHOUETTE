@@ -1,4 +1,6 @@
 #include "Ihm.h"
+#include "Partie.h"
+#include "Joueur.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -141,12 +143,18 @@ void Ihm::afficherMenuPrincipal() const
     } while(choix != 1);
     sleep(VITESSE_DEFILEMENT_TEXTE);
 }
-void Ihm::afficherNomDuJoueur() const
+
+void Ihm::afficherNomDuJoueur(const Joueur& joueur) const
 {
+    std::cout << joueur.getNomJoueur();
 }
-void Ihm::afficherLancerDe() const
+
+void Ihm::afficherResultatLanceDes(unsigned int total) const
 {
+    std::cout << total;
 }
-void Ihm::afficherScoreDuJoueur() const
+
+void Ihm::afficherScoreDuJoueur(const Joueur& joueur) const
 {
+    std::cout << joueur.getScore();
 }
