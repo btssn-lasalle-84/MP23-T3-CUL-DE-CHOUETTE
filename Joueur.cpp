@@ -4,6 +4,8 @@
 #ifdef DEBUG_JOUEUR
 #include <iostream>
 #endif
+#include <algorithm>
+#include <cmath>
 
 Joueur::Joueur(std::string nomDuJoueur) :
     nomDuJoueur(nomDuJoueur), compteurDePoints(NOMBRE_DE_POINTS)
@@ -57,4 +59,67 @@ void Joueur::lancerDes()
         this->des[i]->getValeurDe();
     }
 #endif
+}
+
+TypeCombinaison Joueur::identifierCombinaison()
+{
+    if(identifierCombinaisonChouette())
+        return TypeCombinaison::Chouette;
+    else if(identifierCombinaisonVelute())
+        return TypeCombinaison::Velute;
+    else if(identifierCombinaisonCulDeChouette())
+        return TypeCombinaison::CulDeChouette;
+    else if(identifierCombinaisonSuite())
+        return TypeCombinaison::Suite;
+    else
+        return TypeCombinaison::Aucune;
+}
+
+bool Joueur::identifierCombinaisonChouette()
+{
+    std::sort(des.begin(), des.end());
+
+    if(this->des[0]->getValeurDe() == this->des[1]->getValeurDe())
+    {
+        return true;
+    }
+    else if(this->des[1]->getValeurDe() == this->des[2]->getValeurDe())
+    {
+        return true;
+    }
+    else if(this->des[2]->getValeurDe() == this->des[0]->getValeurDe())
+    {
+        return true;
+    }
+    return false;
+}
+
+bool Joueur::identifierCombinaisonVelute()
+{
+    if(this->des[0]->getValeurDe() + this->des[1]->getValeurDe() ==
+       this->des[2]->getValeurDe())
+    {
+        return true;
+    }
+    else if(this->des[1]->getValeurDe() + this->des[2]->getValeurDe() ==
+            this->des[0]->getValeurDe())
+    {
+        return true;
+    }
+    else if(this->des[2]->getValeurDe() == this->des[0]->getValeurDe() ==
+            this->des[1]->getValeurDe())
+    {
+        return true;
+    }
+    return false;
+}
+
+bool Joueur::identifierCombinaisonCulDeChouette()
+{
+    if(this->des[0]->getValeurDe() == this->des[1]->getValeurDe() &&
+       this->des[0]->getValeurDe() == this->des[2]->getValeurDe())
+    {
+        return true;
+    }
+    return false;
 }

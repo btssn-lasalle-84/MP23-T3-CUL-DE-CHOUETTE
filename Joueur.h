@@ -8,6 +8,15 @@
 #define NOMBRE_DE_POINTS 0
 #define DEBUG_JOUEUR
 
+enum TypeCombinaison
+{
+    Chouette,
+    Velute,
+    CulDeChouette,
+    Suite,
+    Aucune
+};
+
 class De;
 
 class Joueur
@@ -16,14 +25,19 @@ class Joueur
     std::string      nomDuJoueur;
     std::vector<De*> des;
     unsigned int     compteurDePoints;
+    bool             identifierCombinaisonChouette();
+    bool             identifierCombinaisonVelute();
+    bool             identifierCombinaisonCulDeChouette();
+    bool             identifierCombinaisonSuite();
 
   public:
     Joueur(std::string nomDuJoueur = "");
     ~Joueur();
-    unsigned int getScore() const;
-    std::string  getNomJoueur() const;
-    void         lancerDes();
-    void         setNomduJoueur(std::string const nomDuJoueur);
+    unsigned int    getScore() const;
+    std::string     getNomJoueur() const;
+    void            lancerDes();
+    void            setNomduJoueur(std::string const nomDuJoueur);
+    TypeCombinaison identifierCombinaison();
 };
 
 #endif
