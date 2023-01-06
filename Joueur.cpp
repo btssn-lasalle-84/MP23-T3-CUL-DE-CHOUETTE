@@ -56,8 +56,9 @@ void Joueur::lancerDes()
 #ifdef DEBUG_JOUEUR
     for(size_t i = 0; i < des.size(); i++)
     {
-        this->des[i]->getValeurDe();
+        std::cout << "valeur Dé" << this->des[i]->getValeurDe() << std::endl;
     }
+
 #endif
 }
 
@@ -96,17 +97,17 @@ bool Joueur::identifierCombinaisonChouette()
 
 bool Joueur::identifierCombinaisonVelute()
 {
-    if(this->des[0]->getValeurDe() + this->des[1]->getValeurDe() ==
+    if((this->des[0]->getValeurDe() + this->des[1]->getValeurDe()) ==
        this->des[2]->getValeurDe())
     {
         return true;
     }
-    else if(this->des[1]->getValeurDe() + this->des[2]->getValeurDe() ==
+    else if((this->des[1]->getValeurDe() + this->des[2]->getValeurDe()) ==
             this->des[0]->getValeurDe())
     {
         return true;
     }
-    else if(this->des[2]->getValeurDe() == this->des[0]->getValeurDe() ==
+    else if((this->des[2]->getValeurDe() == this->des[0]->getValeurDe()) ==
             this->des[1]->getValeurDe())
     {
         return true;
