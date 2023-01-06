@@ -1,11 +1,6 @@
 #ifndef IHM_H
 #define IHM_H
 
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <unistd.h>
-
 #define VITESSE_DEFILEMENT_TEXTE 8
 
 class Ihm
@@ -16,9 +11,9 @@ class Ihm
     ~Ihm();
 
     void afficherRegle() const;
-    void afficherDebutJeu() const;
-    void afficherJoueur() const;
-    void afficherLancer() const;
+    void afficherMenuPrincipal() const;
+    void afficherNomDuJoueur() const;
+    void afficherLancerDe() const;
     void afficherScoreDuJoueur() const;
 };
 

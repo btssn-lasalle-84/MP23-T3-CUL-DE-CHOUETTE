@@ -1,4 +1,8 @@
 #include "Ihm.h"
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <unistd.h>
 
 Ihm::Ihm()
 {
@@ -10,47 +14,55 @@ Ihm::~Ihm()
 
 void Ihm::afficherRegle() const
 {
+    std::cout << std::setfill('-') << std::setw(10) << std::endl
+              << "LE CUL DE CHOUETTE\n"
+              << std::endl
+
+              << "== Le jeu ==\n"
+              << std::endl
+
+              << "Le Cul De Chouette se joue avec trois dés, Le but du jeu est "
+                 "d'atteindre le premier 343 points, en formant différentes "
+                 "combinaisons, chacun à son tour de jeu.\n"
+              << std::endl;
+    sleep(VITESSE_DEFILEMENT_TEXTE);
+
+    std::cout << "== Démarrage ==\n"
+              << std::endl
+
+              << "Chaque joueur lance 1 dé, le joueur qui a fait le plus petit "
+                 "score commence. "
+                 "S'il y a plusieurs joueurs qui ont fait le plus petit score, "
+                 "ils recommencent pour se départager. "
+                 "Le tour de jeu s'effectue ensuite dans le sens inverse des "
+                 "aiguilles d'une montre.\n"
+              << std::endl;
+    sleep(VITESSE_DEFILEMENT_TEXTE);
+
     std::cout
-      << std::setfill('-') << std::setw(10) << std::endl
-      << "LE CUL DE CHOUETTE\n" << std::endl
-
-      << "== Le jeu ==\n"
+      << "== Déroulement du jeu ==\n"
       << std::endl
 
-      << "Le Cul De Chouette se joue avec trois dés, Le but du jeu est "
-         "d'atteindre le premier 343 points, en formant différentes "
-         "combinaisons, chacun à son tour de jeu.\n"
-      << std::endl; 
-         sleep(VITESSE_DEFILEMENT_TEXTE);
-
-      std::cout << "== Démarrage ==\n"
-      << std::endl
-
-      << "Chaque joueur lance 1 dé, le joueur qui a fait le plus petit score commence. "
-         "S'il y a plusieurs joueurs qui ont fait le plus petit score, "
-         "ils recommencent pour se départager. "
-         "Le tour de jeu s'effectue ensuite dans le sens inverse des aiguilles d'une montre.\n"
-      << std::endl;
-         sleep(VITESSE_DEFILEMENT_TEXTE);
-
-      std::cout << "== Déroulement du jeu ==\n"
-      << std::endl
-
-      << "À son tour de jeu, le joueur lance d’abord 2 dés (les Chouettes), puis le 3e dé (le Cul). "
-         "On applique alors la règle correspondant à la combinaison formée par les trois dés(cf.ci - dessous), "
+      << "À son tour de jeu, le joueur lance d’abord 2 dés (les Chouettes), "
+         "puis le 3e dé (le Cul). "
+         "On applique alors la règle correspondant à la combinaison formée par "
+         "les trois dés(cf.ci - dessous), "
          "sans tenir compte de l'ordre dans lequel les dés ont été tirés. "
          "On peut lancer les trois dés d'un coup pour aller plus vite "
-         "et les règles de l'Achat de Dé et de la Banque ne s'appliquent pas lors de la partie.\n"
+         "et les règles de l'Achat de Dé et de la Banque ne s'appliquent pas "
+         "lors de la partie.\n"
       << std::endl;
-         sleep(VITESSE_DEFILEMENT_TEXTE);
+    sleep(VITESSE_DEFILEMENT_TEXTE);
 
-      std::cout << "== Les combinaisons ==\n"
+    std::cout
+      << "== Les combinaisons ==\n"
       << std::endl
 
       << "* La Chouette : 2 dés identiques"
 
          "La Chouette a pour valeur le chiffre des deux dés identiques. "
-         "Le joueur qui a lancé les dés gagne les points correspondant au carré de la Chouette : "
+         "Le joueur qui a lancé les dés gagne les points correspondant au "
+         "carré de la Chouette : "
 
          "Chouette de 1 = 1 pt, de 2 = 4 pts, "
          "de 3 = 9 pts,"
@@ -58,9 +70,10 @@ void Ihm::afficherRegle() const
          "de 5 = 25 pts,"
          "de 6 = 36 pts.\n"
       << std::endl;
-         sleep(VITESSE_DEFILEMENT_TEXTE);
+    sleep(VITESSE_DEFILEMENT_TEXTE);
 
-      std::cout << "* La Velute : la somme de 2 dés = le 3e dé "
+    std::cout
+      << "* La Velute : la somme de 2 dés = le 3e dé "
 
          "La Velute a pour valeur le chiffre du 3e dé. "
          "Le joueur qui a lancé les dés gagne les points correspondant au "
@@ -85,9 +98,11 @@ void Ihm::afficherRegle() const
          "de 6 = 100 pts.\n"
 
       << std::endl;
-         sleep(VITESSE_DEFILEMENT_TEXTE);
+    sleep(VITESSE_DEFILEMENT_TEXTE);
 
-     std::cout << "== Fin du jeu ==\n" << std::endl
+    std::cout
+      << "== Fin du jeu ==\n"
+      << std::endl
 
       << "Lorsqu'un joueur atteint 343 points (ou plus), il est déclaré "
          "gagnant (le score peut passer dans le négatif, "
@@ -96,41 +111,40 @@ void Ihm::afficherRegle() const
          "application d'un Civet, ...) "
          "avec un score négatif ou nul).\n"
       << std::endl;
-         sleep(VITESSE_DEFILEMENT_TEXTE);
-      std::cout << std::setfill('-') << std::setw(10) << std::endl;
+    sleep(VITESSE_DEFILEMENT_TEXTE);
+    std::cout << std::setfill('-') << std::setw(10) << std::endl;
 }
 
-void Ihm::afficherDebutJeu() const
+void Ihm::afficherMenuPrincipal() const
 {
-   int choix;
-   do
-   {
-      std::cout << "Avez vous compris ? Pouvons nous commencez ? "
-                   "Si vous êtes prêt, Entrez (1), si vous voulez à nouveau les règles, Entrez (2)" << std::endl 
-                << "Votre réponse : " << std::endl;
-      std::cin >> choix;
-      std::cout << "..." << std::endl;
-      sleep(2);
-      std::cout << "..." << std::endl;
-      
-      switch(choix)
-      {
-          case 2:
-            afficherRegle();
-            break;
-         default:
-            std::cout << "Démarrage..." << std::endl;
-            break;
-      }
-   } while (choix != 1);
-   sleep(5);
-   std::cout << "Jeu démarré" << std::endl;
+    std::cout << "-----Bienvenue sur le jeu du CulDeChouette !-----\n "
+              << std::endl;
+    int choix;
+    do
+    {
+        std::cout << " Pouvons nous commencez ? "
+                     "Si vous êtes prêt, Entrez (1), si vous voulez "
+                     "les règles, Entrez (2)"
+                  << std::endl
+                  << "Votre réponse : " << std::endl;
+        std::cin >> choix;
 
+        switch(choix)
+        {
+            case 2:
+                afficherRegle();
+                break;
+            default:
+                std::cout << "Démarrage..." << std::endl;
+                break;
+        }
+    } while(choix != 1);
+    sleep(VITESSE_DEFILEMENT_TEXTE);
 }
-void Ihm::afficherJoueur() const
+void Ihm::afficherNomDuJoueur() const
 {
 }
-void Ihm::afficherLancer() const
+void Ihm::afficherLancerDe() const
 {
 }
 void Ihm::afficherScoreDuJoueur() const
