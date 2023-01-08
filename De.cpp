@@ -38,3 +38,9 @@ void De::lancerDe()
                                                       NOMBRE_MAX_DE);
     this->valeur = generer(nombre);
 }
+#ifdef DEBUG_DE
+    void De::setDe(unsigned int valeur)
+    {
+        this->valeur = valeur;
+    }
+#endif
