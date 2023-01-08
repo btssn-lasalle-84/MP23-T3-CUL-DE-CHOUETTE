@@ -10,11 +10,10 @@
 
 enum TypeCombinaison
 {
-    Chouette,
-    Velute,
-    CulDeChouette,
-    Suite,
-    Aucune
+    Chouette = 0,
+    Velute = 1,
+    CulDeChouette = 2,
+    Aucune = 3
 };
 
 class De;
@@ -28,7 +27,6 @@ class Joueur
     bool             identifierCombinaisonChouette();
     bool             identifierCombinaisonVelute();
     bool             identifierCombinaisonCulDeChouette();
-    bool             identifierCombinaisonSuite();
 
   public:
     Joueur(std::string nomDuJoueur = "");

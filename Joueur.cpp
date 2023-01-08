@@ -56,7 +56,7 @@ void Joueur::lancerDes()
 #ifdef DEBUG_JOUEUR
     for(size_t i = 0; i < des.size(); i++)
     {
-        std::cout << "valeur Dé" << this->des[i]->getValeurDe() << std::endl;
+        std::cout <<  __PRETTY_FUNCTION__ << "valeur Dé : " << this->des[i]->getValeurDe() << std::endl;
     }
 
 #endif
@@ -64,33 +64,33 @@ void Joueur::lancerDes()
 
 TypeCombinaison Joueur::identifierCombinaison()
 {
-    if(identifierCombinaisonChouette())
-        return TypeCombinaison::Chouette;
+    std::sort(des.begin(), des.end());
+    if(identifierCombinaisonCulDeChouette() )
+        return TypeCombinaison::CulDeChouette;
     else if(identifierCombinaisonVelute())
         return TypeCombinaison::Velute;
-    else if(identifierCombinaisonCulDeChouette())
-        return TypeCombinaison::CulDeChouette;
-    else if(identifierCombinaisonSuite())
-        return TypeCombinaison::Suite;
+    else if(identifierCombinaisonChouette())
+        return TypeCombinaison::Chouette;
     else
         return TypeCombinaison::Aucune;
 }
 
 bool Joueur::identifierCombinaisonChouette()
 {
-    std::sort(des.begin(), des.end());
-
     if(this->des[0]->getValeurDe() == this->des[1]->getValeurDe())
     {
-        return true;
+        this->compteurDePoints += pow(this->des[0]->getValeurDe(), 2);
+            return true;
     }
     else if(this->des[1]->getValeurDe() == this->des[2]->getValeurDe())
     {
-        return true;
+        this->compteurDePoints += pow(this->des[1]->getValeurDe(), 2);
+            return true;
     }
     else if(this->des[2]->getValeurDe() == this->des[0]->getValeurDe())
     {
-        return true;
+        this->compteurDePoints += pow(this->des[2]->getValeurDe(), 2);
+            return true;
     }
     return false;
 }
@@ -100,16 +100,7 @@ bool Joueur::identifierCombinaisonVelute()
     if((this->des[0]->getValeurDe() + this->des[1]->getValeurDe()) ==
        this->des[2]->getValeurDe())
     {
-        return true;
-    }
-    else if((this->des[1]->getValeurDe() + this->des[2]->getValeurDe()) ==
-            this->des[0]->getValeurDe())
-    {
-        return true;
-    }
-    else if((this->des[2]->getValeurDe() == this->des[0]->getValeurDe()) ==
-            this->des[1]->getValeurDe())
-    {
+        this->compteurDePoints += (pow(this->des[2]->getValeurDe(), 2) * 2);
         return true;
     }
     return false;
@@ -120,16 +111,7 @@ bool Joueur::identifierCombinaisonCulDeChouette()
     if(this->des[0]->getValeurDe() == this->des[1]->getValeurDe() &&
        this->des[0]->getValeurDe() == this->des[2]->getValeurDe())
     {
-        return true;
-    }
-    return false;
-}
-
-bool Joueur::identifierCombinaisonSuite()
-{
-    if(this->des[2]->getValeurDe() == this->des[1]->getValeurDe() + 1 &&
-       this->des[1]->getValeurDe() == this->des[0]->getValeurDe() + 1)
-    {
+        this->compteurDePoints += (40 + 10 * this->des[0]->getValeurDe());
         return true;
     }
     return false;
