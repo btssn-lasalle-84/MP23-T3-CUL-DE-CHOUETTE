@@ -1,5 +1,6 @@
 #include "De.h"
 #include <random>
+#include <chrono>
 
 #ifdef DEBUG_DE
 #include <iostream>
@@ -33,10 +34,11 @@ int De::getValeurDe() const
 
 void De::lancerDe()
 {
-    static std::random_device                 nombre;
+    static std::default_random_engine nombre(
+      std::chrono::system_clock::now().time_since_epoch().count());
     static std::uniform_int_distribution<int> generer(NOMBRE_MIN_DE,
                                                       NOMBRE_MAX_DE);
-    this->valeur = generer(nombre);
+    valeur = generer(nombre);
 }
 #ifdef DEBUG_DE
 void De::setDe(unsigned int valeur)
