@@ -137,11 +137,9 @@ void Ihm::afficherMenuPrincipal() const
                 afficherRegle();
                 break;
             default:
-                std::cout << "Démarrage..." << std::endl;
                 break;
         }
     } while(choix != 1);
-    sleep(VITESSE_DEFILEMENT_TEXTE);
 }
 
 std::string Ihm::rentrerNomDuJoueur() const
