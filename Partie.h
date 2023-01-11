@@ -5,7 +5,7 @@
 
 #define OBJECTIF_PAR_DEFAUT   343
 #define NB_JOUEURS_PAR_DEFAUT 2
-#define DEBUG_PARTIE
+//#define DEBUG_PARTIE
 
 enum Difficulte
 {
@@ -34,6 +34,7 @@ class Partie
     ~Partie();
     void         jouer();
     unsigned int getObjectifNombre() const;
+    bool         aGagnee(unsigned int score) const;
     unsigned int getNumeroDeTour() const;
 };
 

@@ -63,6 +63,21 @@ void Joueur::lancerDes()
 #endif
 }
 
+unsigned int Joueur::getDes0() const
+{
+    return des[0]->getValeurDe();
+}
+
+unsigned int Joueur::getDes1() const
+{
+    return des[1]->getValeurDe();
+}
+
+unsigned int Joueur::getDes2() const
+{
+    return des[2]->getValeurDe();
+}
+
 TypeCombinaison Joueur::identifierCombinaison()
 {
     if(identifierCombinaisonCulDeChouette())

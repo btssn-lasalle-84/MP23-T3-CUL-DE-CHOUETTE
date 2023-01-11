@@ -6,7 +6,7 @@
 
 #define NOMBRE_DE_DES    3
 #define NOMBRE_DE_POINTS 0
-#define DEBUG_JOUEUR
+//#define DEBUG_JOUEUR
 
 enum TypeCombinaison
 {
@@ -34,6 +34,9 @@ class Joueur
     unsigned int    getScore() const;
     std::string     getNomJoueur() const;
     void            lancerDes();
+    unsigned int    getDes0() const;
+    unsigned int    getDes1() const;
+    unsigned int    getDes2() const;
     void            setNomduJoueur(std::string const nomDuJoueur);
     TypeCombinaison identifierCombinaison();
 };
