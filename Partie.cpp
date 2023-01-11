@@ -62,11 +62,12 @@ void Partie::jouer()
 #endif
             if((*joueur)->getScore() >= OBJECTIF_PAR_DEFAUT)
             {
-                ihm->afficherGagnant((*joueur)->getNomJoueur());
+                ihm->afficherGagnant((*joueur)->getNomJoueur(), this->numeroDeTour);
                 partieTerminee = false;
                 break;
             }
         }
+        this->numeroDeTour += 1;
     }
 }
 
