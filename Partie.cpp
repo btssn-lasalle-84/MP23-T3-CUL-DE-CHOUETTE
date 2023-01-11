@@ -37,27 +37,35 @@ void Partie::jouer()
         (*joueur)->setNomduJoueur(ihm->rentrerNomDuJoueur());
     }
 
-    for(std::list<Joueur*>::iterator joueur = joueurs.begin();
-        joueur != joueurs.end();
-        joueur++)
+    bool partieTerminee = true;
+    while(partieTerminee)
     {
-        ihm->afficherLanceDes((*joueur)->getNomJoueur());
-        (*joueur)->lancerDes();
-        ihm->afficherLesDes((*joueur)->getDes0(),
-                            (*joueur)->getDes1(),
-                            (*joueur)->getDes2());
-        ihm->afficherCombinaison((*joueur)->identifierCombinaison());
-        ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
-                                (*joueur)->getScore());
-
+        for(std::list<Joueur*>::iterator joueur = joueurs.begin();
+            joueur != joueurs.end();
+            joueur++)
+        {
+            ihm->afficherLanceDes((*joueur)->getNomJoueur());
+            (*joueur)->lancerDes();
+            ihm->afficherLesDes((*joueur)->getDes0(),
+                                (*joueur)->getDes1(),
+                                (*joueur)->getDes2());
+            ihm->afficherCombinaison((*joueur)->identifierCombinaison());
+            ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
+                                    (*joueur)->getScore());
 #ifdef DEBUG_PARTIE
-        std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
-                  << " Joueur = " << *joueur << std::endl;
+            std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
+                      << " Joueur = " << *joueur << std::endl;
 #endif
 #ifdef DEBUG_PARTIE
-        std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
-                  << " score : " << (*joueur)->getScore() << std::endl;
+            std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
+                      << " score : " << (*joueur)->getScore() << std::endl;
 #endif
+            if((*joueur)->getScore() > OBJECTIF_PAR_DEFAUT)
+            {
+                ihm->afficherGagnant((*joueur)->getNomJoueur());
+                partieTerminee = false;
+            }
+        }
     }
 }
 

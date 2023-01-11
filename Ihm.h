@@ -17,7 +17,7 @@ class Ihm
     void        afficherRegle() const;
     void        afficherMenuPrincipal() const;
     std::string rentrerNomDuJoueur() const;
-    std::string afficherNomDuJoueur(std::string nomDujoueur) const;
+    void        afficherGagnant(std::string nomDujoueur) const;
     void        afficherScoreTotal(std::string  nomDujoueur,
                                    unsigned int scoreTotal) const;
     void        afficherCombinaison(TypeCombinaison combinaison) const;

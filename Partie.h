@@ -34,6 +34,7 @@ class Partie
     ~Partie();
     void         jouer();
     unsigned int getObjectifNombre() const;
+    bool         aGagnee(unsigned int score) const;
     unsigned int getNumeroDeTour() const;
 };
 
