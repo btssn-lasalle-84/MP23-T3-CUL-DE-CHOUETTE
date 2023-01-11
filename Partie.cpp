@@ -1,10 +1,7 @@
 #include "Partie.h"
 #include "Joueur.h"
 #include "Ihm.h"
-
-#ifdef DEBUG_PARTIE
 #include <iostream>
-#endif
 
 Partie::Partie(unsigned int nombreDeJoueurs /*= NB_JOUEURS_PAR_DEFAUT*/,
                Difficulte   difficulte /*= Difficulte::Normal*/,
@@ -41,6 +38,11 @@ void Partie::jouer()
                   << " Joueur = " << *joueur << std::endl;
 #endif
         (*joueur)->lancerDes();
+#ifdef DEBUG_PARTIE
+        std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
+                  << " combinaison n° " << (*joueur)->identifierCombinaison()
+                  << " score : " << (*joueur)->getScore() << std::endl;
+#endif
     }
 }
 

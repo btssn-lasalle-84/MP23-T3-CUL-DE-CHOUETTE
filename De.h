@@ -9,12 +9,10 @@
 #define NOMBRE_MIN_DE   1
 #define NOMBRE_MAX_DE   6
 
-#define DEBUG_DE
-
 class De
 {
   private:
-    int          valeur;
+    unsigned int valeur;
     unsigned int nombreDeFaces;
 
   public:
@@ -23,6 +21,9 @@ class De
 
     int  getValeurDe() const;
     void lancerDe();
+#ifdef DEBUG_DE
+    void setDe(unsigned int valeur);
+#endif
 };
 
 #endif // !DES_H

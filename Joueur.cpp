@@ -4,6 +4,8 @@
 #ifdef DEBUG_JOUEUR
 #include <iostream>
 #endif
+#include <algorithm>
+#include <cmath>
 
 Joueur::Joueur(std::string nomDuJoueur) :
     nomDuJoueur(nomDuJoueur), compteurDePoints(NOMBRE_DE_POINTS)
@@ -54,7 +56,63 @@ void Joueur::lancerDes()
 #ifdef DEBUG_JOUEUR
     for(size_t i = 0; i < des.size(); i++)
     {
-        this->des[i]->getValeurDe();
+        std::cout << __PRETTY_FUNCTION__
+                  << "valeur Dé : " << this->des[i]->getValeurDe() << std::endl;
     }
+
 #endif
+}
+
+TypeCombinaison Joueur::identifierCombinaison()
+{
+    if(identifierCombinaisonCulDeChouette())
+        return TypeCombinaison::CulDeChouette;
+    else if(identifierCombinaisonVelute())
+        return TypeCombinaison::Velute;
+    else if(identifierCombinaisonChouette())
+        return TypeCombinaison::Chouette;
+    else
+        return TypeCombinaison::Aucune;
+}
+
+bool Joueur::identifierCombinaisonChouette()
+{
+    if(this->des[0]->getValeurDe() == this->des[1]->getValeurDe())
+    {
+        this->compteurDePoints += pow(this->des[0]->getValeurDe(), 2);
+        return true;
+    }
+    else if(this->des[1]->getValeurDe() == this->des[2]->getValeurDe())
+    {
+        this->compteurDePoints += pow(this->des[1]->getValeurDe(), 2);
+        return true;
+    }
+    else if(this->des[2]->getValeurDe() == this->des[0]->getValeurDe())
+    {
+        this->compteurDePoints += pow(this->des[2]->getValeurDe(), 2);
+        return true;
+    }
+    return false;
+}
+
+bool Joueur::identifierCombinaisonVelute()
+{
+    if((this->des[0]->getValeurDe() + this->des[1]->getValeurDe()) ==
+       this->des[2]->getValeurDe())
+    {
+        this->compteurDePoints += (pow(this->des[2]->getValeurDe(), 2) * 2);
+        return true;
+    }
+    return false;
+}
+
+bool Joueur::identifierCombinaisonCulDeChouette()
+{
+    if(this->des[0]->getValeurDe() == this->des[1]->getValeurDe() &&
+       this->des[0]->getValeurDe() == this->des[2]->getValeurDe())
+    {
+        this->compteurDePoints += (40 + 10 * this->des[0]->getValeurDe());
+        return true;
+    }
+    return false;
 }
