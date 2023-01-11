@@ -29,18 +29,33 @@ Partie::~Partie()
 
 void Partie::jouer()
 {
+    ihm->afficherMenuPrincipal();
     for(std::list<Joueur*>::iterator joueur = joueurs.begin();
         joueur != joueurs.end();
         joueur++)
     {
+        (*joueur)->setNomduJoueur(ihm->rentrerNomDuJoueur());
+    }
+
+    for(std::list<Joueur*>::iterator joueur = joueurs.begin();
+        joueur != joueurs.end();
+        joueur++)
+    {
+        ihm->afficherLanceDes((*joueur)->getNomJoueur());
+        (*joueur)->lancerDes();
+        ihm->afficherLesDes((*joueur)->getDes0(),
+                            (*joueur)->getDes1(),
+                            (*joueur)->getDes2());
+        ihm->afficherCombinaison((*joueur)->identifierCombinaison());
+        ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
+                                (*joueur)->getScore());
+
 #ifdef DEBUG_PARTIE
         std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
                   << " Joueur = " << *joueur << std::endl;
 #endif
-        (*joueur)->lancerDes();
 #ifdef DEBUG_PARTIE
         std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
-                  << " combinaison n° " << (*joueur)->identifierCombinaison()
                   << " score : " << (*joueur)->getScore() << std::endl;
 #endif
     }

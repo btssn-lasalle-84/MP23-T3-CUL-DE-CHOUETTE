@@ -144,17 +144,65 @@ void Ihm::afficherMenuPrincipal() const
     sleep(VITESSE_DEFILEMENT_TEXTE);
 }
 
-void Ihm::afficherNomDuJoueur(const Joueur& joueur) const
+std::string Ihm::rentrerNomDuJoueur() const
 {
-    std::cout << joueur.getNomJoueur();
+    std::string nomDuJoueur;
+    std::cout << "Entrez le nom du joueur" << std::endl;
+    std::cin >> nomDuJoueur;
+    return nomDuJoueur;
 }
 
-void Ihm::afficherResultatLanceDes(unsigned int total) const
+std::string Ihm::afficherNomDuJoueur(std::string nomDujoueur) const
 {
-    std::cout << total;
+    std::cout << nomDujoueur << std::endl;
+}
+
+void Ihm::afficherLanceDes(std::string const nomDuJoueur) const
+{
+    std::cout << nomDuJoueur << " lance les dès !" << std::endl;
+}
+
+void Ihm::afficherScoreTotal(std::string  nomDujoueur,
+                             unsigned int scoreTotal) const
+{
+    std::cout << "le score de " << nomDujoueur << " est de : " << scoreTotal
+              << std::endl;
+}
+
+void Ihm::afficherCombinaison(TypeCombinaison combinaison) const
+{
+    std::string nomCombinaison;
+    switch(combinaison)
+    {
+        case 0:
+            nomCombinaison = "Chouette";
+            break;
+        case 1:
+            nomCombinaison = "Velute";
+            break;
+        case 2:
+            nomCombinaison = "CulDeChouette";
+            break;
+        case 3:
+            nomCombinaison = "Aucune";
+            break;
+
+        default:
+            break;
+    }
+    std::cout << "La combinaison réalisé est : " << nomCombinaison << std::endl;
 }
 
 void Ihm::afficherScoreDuJoueur(const Joueur& joueur) const
 {
     std::cout << joueur.getScore();
+}
+
+void Ihm::afficherLesDes(unsigned int des0,
+                         unsigned int des1,
+                         unsigned int des2)
+{
+    std::cout << "dé numero " << 1 << " = " << des0 << std::endl;
+    std::cout << "dé numero " << 2 << " = " << des1 << std::endl;
+    std::cout << "dé numero " << 3 << " = " << des2 << std::endl;
 }

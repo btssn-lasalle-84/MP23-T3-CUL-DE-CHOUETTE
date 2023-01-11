@@ -5,7 +5,7 @@
 
 #define OBJECTIF_PAR_DEFAUT   343
 #define NB_JOUEURS_PAR_DEFAUT 2
-#define DEBUG_PARTIE
+//#define DEBUG_PARTIE
 
 enum Difficulte
 {
