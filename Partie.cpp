@@ -39,7 +39,9 @@ void Partie::jouer()
 #endif
         (*joueur)->lancerDes();
 #ifdef DEBUG_PARTIE
-        std::cout << __PRETTY_FUNCTION__ <<  " ligne n° " << __LINE__ <<" combinaison n° "<<(*joueur)->identifierCombinaison()<< " score : "  << (*joueur)->getScore()<< std::endl;
+        std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
+                  << " combinaison n° " << (*joueur)->identifierCombinaison()
+                  << " score : " << (*joueur)->getScore() << std::endl;
 #endif
     }
 }

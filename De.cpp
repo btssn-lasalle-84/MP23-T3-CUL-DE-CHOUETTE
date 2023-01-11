@@ -39,8 +39,8 @@ void De::lancerDe()
     this->valeur = generer(nombre);
 }
 #ifdef DEBUG_DE
-    void De::setDe(unsigned int valeur)
-    {
-        this->valeur = valeur;
-    }
+void De::setDe(unsigned int valeur)
+{
+    this->valeur = valeur;
+}
 #endif

@@ -10,10 +10,10 @@
 
 enum TypeCombinaison
 {
-    Chouette = 0,
-    Velute = 1,
+    Chouette      = 0,
+    Velute        = 1,
     CulDeChouette = 2,
-    Aucune = 3
+    Aucune        = 3
 };
 
 class De;

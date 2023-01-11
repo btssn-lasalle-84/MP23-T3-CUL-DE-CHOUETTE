@@ -12,7 +12,7 @@
 class De
 {
   private:
-    unsigned int          valeur;
+    unsigned int valeur;
     unsigned int nombreDeFaces;
 
   public:

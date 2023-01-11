@@ -56,7 +56,8 @@ void Joueur::lancerDes()
 #ifdef DEBUG_JOUEUR
     for(size_t i = 0; i < des.size(); i++)
     {
-        std::cout <<  __PRETTY_FUNCTION__ << "valeur Dé : " << this->des[i]->getValeurDe() << std::endl;
+        std::cout << __PRETTY_FUNCTION__
+                  << "valeur Dé : " << this->des[i]->getValeurDe() << std::endl;
     }
 
 #endif
@@ -65,7 +66,7 @@ void Joueur::lancerDes()
 TypeCombinaison Joueur::identifierCombinaison()
 {
     std::sort(des.begin(), des.end());
-    if(identifierCombinaisonCulDeChouette() )
+    if(identifierCombinaisonCulDeChouette())
         return TypeCombinaison::CulDeChouette;
     else if(identifierCombinaisonVelute())
         return TypeCombinaison::Velute;
@@ -80,17 +81,17 @@ bool Joueur::identifierCombinaisonChouette()
     if(this->des[0]->getValeurDe() == this->des[1]->getValeurDe())
     {
         this->compteurDePoints += pow(this->des[0]->getValeurDe(), 2);
-            return true;
+        return true;
     }
     else if(this->des[1]->getValeurDe() == this->des[2]->getValeurDe())
     {
         this->compteurDePoints += pow(this->des[1]->getValeurDe(), 2);
-            return true;
+        return true;
     }
     else if(this->des[2]->getValeurDe() == this->des[0]->getValeurDe())
     {
         this->compteurDePoints += pow(this->des[2]->getValeurDe(), 2);
-            return true;
+        return true;
     }
     return false;
 }
