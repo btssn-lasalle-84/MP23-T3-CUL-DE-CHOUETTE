@@ -37,10 +37,6 @@ unsigned int Joueur::getScore() const
     return this->compteurDePoints;
 }
 
-void Joueur::setScore()
-{
-}
-
 std::string Joueur::getNomJoueur() const
 {
     return this->nomDuJoueur;
@@ -69,7 +65,6 @@ void Joueur::lancerDes()
 
 TypeCombinaison Joueur::identifierCombinaison()
 {
-    std::sort(des.begin(), des.end());
     if(identifierCombinaisonCulDeChouette())
         return TypeCombinaison::CulDeChouette;
     else if(identifierCombinaisonVelute())
