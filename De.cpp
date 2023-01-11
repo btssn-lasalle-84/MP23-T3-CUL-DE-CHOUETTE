@@ -1,4 +1,5 @@
 #include "De.h"
+#include <chrono>
 #include <random>
 #include <chrono>
 
@@ -40,6 +41,7 @@ void De::lancerDe()
                                                       NOMBRE_MAX_DE);
     valeur = generer(nombre);
 }
+
 #ifdef DEBUG_DE
 void De::setDe(unsigned int valeur)
 {
