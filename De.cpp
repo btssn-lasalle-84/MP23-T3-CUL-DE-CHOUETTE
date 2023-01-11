@@ -34,7 +34,9 @@ int De::getValeurDe() const
 
 void De::lancerDe()
 {
-    static std::default_random_engine nombre(std::chrono::system_clock::now().time_since_epoch().count());
-    static std::uniform_int_distribution<int> generer(NOMBRE_MIN_DE, NOMBRE_MAX_DE);
+    static std::default_random_engine nombre(
+      std::chrono::system_clock::now().time_since_epoch().count());
+    static std::uniform_int_distribution<int> generer(NOMBRE_MIN_DE,
+                                                      NOMBRE_MAX_DE);
     valeur = generer(nombre);
 }
