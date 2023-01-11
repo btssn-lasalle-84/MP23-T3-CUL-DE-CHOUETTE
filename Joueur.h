@@ -21,6 +21,7 @@ class Joueur
     Joueur(std::string nomDuJoueur = "");
     ~Joueur();
     unsigned int getScore() const;
+    void         setScore();
     std::string  getNomJoueur() const;
     void         lancerDes();
     void         setNomduJoueur(std::string const nomDuJoueur);

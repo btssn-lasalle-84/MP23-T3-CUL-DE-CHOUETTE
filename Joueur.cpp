@@ -35,6 +35,10 @@ unsigned int Joueur::getScore() const
     return this->compteurDePoints;
 }
 
+void Joueur::setScore()
+{
+}
+
 std::string Joueur::getNomJoueur() const
 {
     return this->nomDuJoueur;
