@@ -72,7 +72,12 @@ TypeCombinaison Joueur::identifierCombinaison()
     else if(identifierCombinaisonChouette())
         return TypeCombinaison::Chouette;
     else
+    {
+        this->compteurDePoints +=
+          (this->des[0]->getValeurDe() + this->des[1]->getValeurDe() +
+           this->des[2]->getValeurDe());
         return TypeCombinaison::Aucune;
+    }
 }
 
 bool Joueur::identifierCombinaisonChouette()
