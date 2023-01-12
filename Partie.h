@@ -35,6 +35,7 @@ class Partie
     void         jouer();
     unsigned int getObjectifNombre() const;
     unsigned int getNumeroDeTour() const;
+    bool         aGagne(unsigned int const& score);
 };
 
 #endif // !PARTIE_H

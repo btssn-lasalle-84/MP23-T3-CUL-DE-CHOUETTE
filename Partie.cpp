@@ -61,15 +61,29 @@ void Partie::jouer()
                       << " score : " << (*joueur)->getScore() << std::endl;
 #endif
             this->numeroDeTour += 1;
-            if((*joueur)->getScore() > OBJECTIF_PAR_DEFAUT)
+            partieTerminee = this->aGagne((*joueur)->getScore());
+            if(partieTerminee == false)
             {
                 ihm->afficherGagnant((*joueur)->getNomJoueur(),
                                      this->numeroDeTour);
-                partieTerminee = false;
                 break;
             }
         }
     }
+}
+
+bool Partie::aGagne(unsigned int const& score)
+{
+    for(std::list<Joueur*>::iterator joueur = joueurs.begin();
+        joueur != joueurs.end();
+        joueur++)
+    {
+        if(score > OBJECTIF_PAR_DEFAUT)
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 unsigned int Partie::getObjectifNombre() const
