@@ -37,8 +37,8 @@ void Partie::jouer()
         (*joueur)->setNomduJoueur(ihm->rentrerNomDuJoueur());
     }
 
-    bool partieTerminee = true;
-    while(partieTerminee)
+    bool partieNonTerminee = true;
+    while(partieNonTerminee)
     {
         for(std::list<Joueur*>::iterator joueur = joueurs.begin();
             joueur != joueurs.end();
@@ -61,8 +61,8 @@ void Partie::jouer()
                       << " score : " << (*joueur)->getScore() << std::endl;
 #endif
             this->numeroDeTour += 1;
-            partieTerminee = this->aGagne((*joueur)->getScore());
-            if(partieTerminee == false)
+            partieNonTerminee = this->aGagne((*joueur)->getScore());
+            if(partieNonTerminee == false)
             {
                 ihm->afficherGagnant((*joueur)->getNomJoueur(),
                                      this->numeroDeTour);
