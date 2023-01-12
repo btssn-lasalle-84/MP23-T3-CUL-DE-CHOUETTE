@@ -21,9 +21,7 @@ class De
 
     int  getValeurDe() const;
     void lancerDe();
-#ifdef DEBUG_DE
     void setDe(unsigned int valeur);
-#endif
 };
 
 #endif // !DES_H

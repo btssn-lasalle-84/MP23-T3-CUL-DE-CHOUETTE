@@ -38,6 +38,8 @@ class Joueur
     unsigned int    getDes1() const;
     unsigned int    getDes2() const;
     void            setNomduJoueur(const std::string& nomDuJoueur);
+    void            setDe(unsigned int valeur);
+    void            trierDes();
     TypeCombinaison identifierCombinaison();
 };
 

@@ -1,9 +1,8 @@
 #include "Joueur.h"
 #include "De.h"
 
-#ifdef DEBUG_JOUEUR
 #include <iostream>
-#endif
+
 #include <algorithm>
 #include <cmath>
 
@@ -78,8 +77,25 @@ unsigned int Joueur::getDes2() const
     return des[2]->getValeurDe();
 }
 
+void Joueur::trierDes()
+{
+    for(size_t i = 0; i < des.size(); i++)
+    {
+        for(size_t j = i + 1; j < des.size(); j++)
+        {
+            if(des[j]->getValeurDe() < des[i]->getValeurDe())
+            {
+                unsigned int tampon = des[i]->getValeurDe();
+                des[i]->setDe(des[j]->getValeurDe());
+                des[j]->setDe(tampon);
+            }
+        }
+    }
+}
+
 TypeCombinaison Joueur::identifierCombinaison()
 {
+    this->trierDes();
     if(identifierCombinaisonCulDeChouette())
         return TypeCombinaison::CulDeChouette;
     else if(identifierCombinaisonVelute())
