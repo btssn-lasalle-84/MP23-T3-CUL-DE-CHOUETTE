@@ -196,9 +196,12 @@ void Ihm::afficherCombinaison(TypeCombinaison combinaison) const
             nomCombinaison = "Velute";
             break;
         case 2:
-            nomCombinaison = "CulDeChouette";
+            nomCombinaison = "Suite";
             break;
         case 3:
+            nomCombinaison = "CulDeChouette";
+            break;
+        case 4:
             nomCombinaison = "Aucune";
             break;
 

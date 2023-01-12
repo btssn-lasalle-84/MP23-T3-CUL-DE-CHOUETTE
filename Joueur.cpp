@@ -98,6 +98,8 @@ TypeCombinaison Joueur::identifierCombinaison()
     this->trierDes();
     if(identifierCombinaisonCulDeChouette())
         return TypeCombinaison::CulDeChouette;
+    else if(identifierCombinaisonSuite())
+        return TypeCombinaison::Suite;
     else if(identifierCombinaisonVelute())
         return TypeCombinaison::Velute;
     else if(identifierCombinaisonChouette())
@@ -139,6 +141,17 @@ bool Joueur::identifierCombinaisonCulDeChouette()
        this->des[0]->getValeurDe() == this->des[2]->getValeurDe())
     {
         this->compteurDePoints += (40 + 10 * this->des[0]->getValeurDe());
+        return true;
+    }
+    return false;
+}
+
+bool Joueur::identifierCombinaisonSuite()
+{
+    if(this->des[1]->getValeurDe() == (this->des[0]->getValeurDe() + 1) &&
+       this->des[2]->getValeurDe() == (this->des[1]->getValeurDe() + 1))
+    {
+        this->compteurDePoints += (5 * this->des[2]->getValeurDe());
         return true;
     }
     return false;
