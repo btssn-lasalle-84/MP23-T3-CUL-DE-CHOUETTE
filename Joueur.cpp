@@ -113,19 +113,10 @@ TypeCombinaison Joueur::identifierCombinaison()
 
 bool Joueur::identifierCombinaisonChouette()
 {
-    if(this->des[0]->getValeurDe() == this->des[1]->getValeurDe())
-    {
-        this->compteurDePoints += pow(this->des[0]->getValeurDe(), 2);
-        return true;
-    }
-    else if(this->des[1]->getValeurDe() == this->des[2]->getValeurDe())
+    if(this->des[1]->getValeurDe() == this->des[0]->getValeurDe() ||
+       this->des[1]->getValeurDe() == this->des[2]->getValeurDe())
     {
         this->compteurDePoints += pow(this->des[1]->getValeurDe(), 2);
-        return true;
-    }
-    else if(this->des[2]->getValeurDe() == this->des[0]->getValeurDe())
-    {
-        this->compteurDePoints += pow(this->des[2]->getValeurDe(), 2);
         return true;
     }
     return false;
