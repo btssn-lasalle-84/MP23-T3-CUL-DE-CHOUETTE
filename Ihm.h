@@ -1,7 +1,7 @@
 #ifndef IHM_H
 #define IHM_H
 
-#define VITESSE_DEFILEMENT_TEXTE 2
+#define VITESSE_DEFILEMENT_TEXTE 1
 #include <string>
 #include "Joueur.h"
 
