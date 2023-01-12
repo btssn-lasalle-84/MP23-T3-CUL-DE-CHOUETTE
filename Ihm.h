@@ -17,16 +17,16 @@ class Ihm
     void        afficherRegle() const;
     void        afficherMenuPrincipal() const;
     std::string rentrerNomDuJoueur() const;
-    void        afficherGagnant(std::string  nomDujoueur,
-                                unsigned int nombreDeTour) const;
-    void        afficherScoreTotal(std::string  nomDujoueur,
-                                   unsigned int scoreTotal) const;
+    void        afficherGagnant(const std::string& nomDujoueur,
+                                unsigned int       nombreDeTour) const;
+    void        afficherScoreTotal(const std::string& nomDujoueur,
+                                   unsigned int       scoreTotal) const;
     void        afficherCombinaison(TypeCombinaison combinaison) const;
-    void        afficherLanceDes(std::string const nomDuJoueur) const;
+    void        afficherLanceDes(const std::string& nomDuJoueur) const;
     void        afficherScoreDuJoueur(const Joueur& joueur) const;
     void        afficherLesDes(unsigned int des0,
-                               unsigned int des2,
-                               unsigned int des3);
+                               unsigned int des1,
+                               unsigned int des2);
 };
 
 #endif // IHM_H

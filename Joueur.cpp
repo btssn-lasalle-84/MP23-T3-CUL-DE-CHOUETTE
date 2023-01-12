@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <cmath>
 
-Joueur::Joueur(std::string nomDuJoueur) :
+Joueur::Joueur(const std::string& nomDuJoueur) :
     nomDuJoueur(nomDuJoueur), compteurDePoints(NOMBRE_DE_POINTS)
 {
 #ifdef DEBUG_JOUEUR
@@ -42,7 +42,7 @@ std::string Joueur::getNomJoueur() const
     return this->nomDuJoueur;
 }
 
-void Joueur::setNomduJoueur(std::string const nomDuJoueur)
+void Joueur::setNomduJoueur(const std::string& nomDuJoueur)
 {
     this->nomDuJoueur = nomDuJoueur;
 }
