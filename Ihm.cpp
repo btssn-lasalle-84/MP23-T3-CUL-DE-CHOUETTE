@@ -297,6 +297,7 @@ void Ihm::afficherLesDes(unsigned int des0,
             default:
                 break;
         }
+        sleep(VITESSE_DEFILEMENT_TEXTE);
     }
 
     std::cout << "dé n° " << 1 << " = " << des0 << std::endl;
