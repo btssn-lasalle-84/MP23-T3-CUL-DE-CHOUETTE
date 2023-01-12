@@ -29,7 +29,7 @@ class Joueur
     bool             identifierCombinaisonCulDeChouette();
 
   public:
-    Joueur(std::string nomDuJoueur = "");
+    Joueur(const std::string& nomDuJoueur = "");
     ~Joueur();
     unsigned int    getScore() const;
     std::string     getNomJoueur() const;
@@ -37,7 +37,7 @@ class Joueur
     unsigned int    getDes0() const;
     unsigned int    getDes1() const;
     unsigned int    getDes2() const;
-    void            setNomduJoueur(std::string const nomDuJoueur);
+    void            setNomduJoueur(const std::string& nomDuJoueur);
     TypeCombinaison identifierCombinaison();
 };
 
