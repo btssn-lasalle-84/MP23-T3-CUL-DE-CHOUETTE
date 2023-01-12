@@ -147,6 +147,7 @@ std::string Ihm::rentrerNomDuJoueur() const
     std::string nomDuJoueur;
     std::cout << "Entrez le nom du joueur" << std::endl;
     std::cin >> nomDuJoueur;
+    std::cout << std::endl;
     return nomDuJoueur;
 }
 
@@ -154,18 +155,32 @@ void Ihm::afficherGagnant(const std::string& nomDujoueur,
                           unsigned int       nombreDeTour) const
 {
     std::cout << "Le gagnant est : " << nomDujoueur << " en " << nombreDeTour
-              << " coups, Bravo a lui ! " << std::endl;
+              << " coups, Bravo a lui ! \n"
+              << std::endl;
 }
 
 void Ihm::afficherLanceDes(const std::string& nomDuJoueur) const
 {
-    std::cout << nomDuJoueur << " lance les dès !" << std::endl;
+    std::cout << nomDuJoueur << " : C'est à votre tour !\n" << std::endl;
+    int choix;
+    do
+    {
+        std::cout << "Pour lancer les dés, appuyez sur (1) : \n" << std::endl;
+        std::cin >> choix;
+        if(choix != 1)
+        {
+            std::cout << "Appuyer sur (1), svp :) " << std::endl;
+        }
+    } while(choix != 1);
+
+    std::cout << "\n" << nomDuJoueur << " lance les dès !\n" << std::endl;
 }
 
 void Ihm::afficherScoreTotal(const std::string& nomDujoueur,
                              unsigned int       scoreTotal) const
 {
     std::cout << "le score de " << nomDujoueur << " est de : " << scoreTotal
+              << "\n"
               << std::endl;
 }
 
@@ -190,7 +205,8 @@ void Ihm::afficherCombinaison(TypeCombinaison combinaison) const
         default:
             break;
     }
-    std::cout << "La combinaison réalisé est : " << nomCombinaison << std::endl;
+    std::cout << "La combinaison réalisé est : " << nomCombinaison << "\n"
+              << std::endl;
 }
 
 void Ihm::afficherScoreDuJoueur(const Joueur& joueur) const
@@ -202,7 +218,88 @@ void Ihm::afficherLesDes(unsigned int des0,
                          unsigned int des1,
                          unsigned int des2)
 {
-    std::cout << "dé numero " << 1 << " = " << des0 << std::endl;
-    std::cout << "dé numero " << 2 << " = " << des1 << std::endl;
-    std::cout << "dé numero " << 3 << " = " << des2 << std::endl;
+    std::vector<unsigned int> lesDes;
+    lesDes.push_back(des0);
+    lesDes.push_back(des1);
+    lesDes.push_back(des2);
+
+    for(size_t i = 0; i < lesDes.size(); i++)
+    {
+        switch(lesDes[i])
+        {
+            case 1:
+                std::cout << R"(
+                                ______
+                               /      /\
+                              /   O  /O \
+                             /_____ /    \
+                             \O    O\    /
+                              \O    O\ O/
+                               \O____O\/
+                                        )"<< std::endl;
+                break;
+
+            case 2:
+                std::cout << R"(
+                                ______
+                              /     O/\
+                             /      /  \
+                            /O____ /    \
+                            \O    O\  O /
+                             \O    O\  /
+                              \O____O\/
+                                        )"<< std::endl;
+                break;
+            case 3:
+                std::cout << R"(
+                                ______
+                               /     O/\
+                              /   O  /O \
+                             /O____ /    \
+                             \O    O\    /
+                              \O    O\ O/
+                               \O____O\/
+                                        )"<< std::endl;
+                break;
+            case 4:
+                std::cout << R"(
+                                ______
+                               /O    O/\
+                              /      /O \
+                             /O____O/    \
+                             \O    O\    /
+                              \O    O\ O/
+                               \O____O\/
+                                        )"<< std::endl;
+                break;
+            case 5:
+                std::cout << R"(
+                                ______
+                              /O    O/\
+                             /   O  /O \
+                            /O____O/    \
+                            \O    O\    /
+                             \O    O\ O/
+                              \O____O\/
+                                        )"<< std::endl;
+                break;
+            case 6:
+                std::cout << R"(
+                                ______
+                               /O    O/\
+                              /O    O/O \
+                             /O____O/    \
+                             \O    O\    /
+                              \      \ O/
+                               \O____O\/
+                                        )"<< std::endl;
+                break;
+            default:
+                break;
+        }
+    }
+
+    std::cout << "dé n° " << 1 << " = " << des0 << std::endl;
+    std::cout << "dé n° " << 2 << " = " << des1 << std::endl;
+    std::cout << "dé n° " << 3 << " = " << des2 << "\n" << std::endl;
 }
