@@ -150,10 +150,11 @@ std::string Ihm::rentrerNomDuJoueur() const
     return nomDuJoueur;
 }
 
-void Ihm::afficherGagnant(std::string nomDujoueur) const
+void Ihm::afficherGagnant(std::string  nomDujoueur,
+                          unsigned int nombreDeTour) const
 {
-    std::cout << "Le gagnant est : " << nomDujoueur << " Bravo a lui ! "
-              << std::endl;
+    std::cout << "Le gagnant est : " << nomDujoueur << " en " << nombreDeTour
+              << " coups, Bravo a lui ! " << std::endl;
 }
 
 void Ihm::afficherLanceDes(std::string const nomDuJoueur) const

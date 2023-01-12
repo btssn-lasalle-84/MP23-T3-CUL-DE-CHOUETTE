@@ -60,9 +60,11 @@ void Partie::jouer()
             std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
                       << " score : " << (*joueur)->getScore() << std::endl;
 #endif
-            if((*joueur)->getScore() >= OBJECTIF_PAR_DEFAUT)
+            this->numeroDeTour += 1;
+            if((*joueur)->getScore() > OBJECTIF_PAR_DEFAUT)
             {
-                ihm->afficherGagnant((*joueur)->getNomJoueur());
+                ihm->afficherGagnant((*joueur)->getNomJoueur(),
+                                     this->numeroDeTour);
                 partieTerminee = false;
                 break;
             }
