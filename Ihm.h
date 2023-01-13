@@ -1,7 +1,7 @@
 #ifndef IHM_H
 #define IHM_H
-
 #define VITESSE_DEFILEMENT_TEXTE 1
+
 #include <string>
 #include "Joueur.h"
 
@@ -24,9 +24,10 @@ class Ihm
     void        afficherCombinaison(TypeCombinaison combinaison) const;
     void        afficherLanceDes(const std::string& nomDuJoueur) const;
     void        afficherScoreDuJoueur(const Joueur& joueur) const;
-    void        afficherLesDes(unsigned int des0,
-                               unsigned int des1,
-                               unsigned int des2);
+    void        afficherLesDes(unsigned int premierDe,
+                               unsigned int deuxiemeDe,
+                               unsigned int troisiemeDe);
+    void        afficherUnDe(unsigned int premierDe);
 };
 
 #endif // IHM_H

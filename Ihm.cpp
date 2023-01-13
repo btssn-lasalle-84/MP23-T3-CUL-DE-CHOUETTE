@@ -45,7 +45,7 @@ void Ihm::afficherRegle() const
       << "== Déroulement du jeu ==\n"
       << std::endl
 
-      << "À son tour de jeu, le joueur lance d’abord 2 dés (les Chouettes), "
+      << "À son tour de jeu, le joueur lance d'abord 2 dés (les Chouettes), "
          "puis le 3e dé (le Cul). "
          "On applique alors la règle correspondant à la combinaison formée par "
          "les trois dés(cf.ci - dessous), "
@@ -217,14 +217,14 @@ void Ihm::afficherScoreDuJoueur(const Joueur& joueur) const
     std::cout << joueur.getScore();
 }
 
-void Ihm::afficherLesDes(unsigned int des0,
-                         unsigned int des1,
-                         unsigned int des2)
+void Ihm::afficherLesDes(unsigned int premierDe,
+                         unsigned int deuxiemeDe,
+                         unsigned int troisiemeDe)
 {
     std::vector<unsigned int> lesDes;
-    lesDes.push_back(des0);
-    lesDes.push_back(des1);
-    lesDes.push_back(des2);
+    lesDes.push_back(premierDe);
+    lesDes.push_back(deuxiemeDe);
+    lesDes.push_back(troisiemeDe);
 
     for(size_t i = 0; i < lesDes.size(); i++)
     {
@@ -303,7 +303,85 @@ void Ihm::afficherLesDes(unsigned int des0,
         sleep(VITESSE_DEFILEMENT_TEXTE);
     }
 
-    std::cout << "dé n° " << 1 << " = " << des0 << std::endl;
-    std::cout << "dé n° " << 2 << " = " << des1 << std::endl;
-    std::cout << "dé n° " << 3 << " = " << des2 << "\n" << std::endl;
+    std::cout << "Résultat : \n" << std::endl; 
+    std::cout << "dé n° " << 1 << " = " << premierDe << std::endl;
+    std::cout << "dé n° " << 2 << " = " << deuxiemeDe << std::endl;
+    std::cout << "dé n° " << 3 << " = " << troisiemeDe << "\n" << std::endl;
 }
+
+void Ihm::afficherUnDe(unsigned int premierDe)
+{
+        switch(premierDe)
+        {
+            case 1:
+                std::cout << R"(
+                                ______
+                               /      /\
+                              /   O  /O \
+                             /_____ /    \
+                             \O    O\    /
+                              \O    O\ O/
+                               \O____O\/
+                                        )"<< std::endl;
+                break;
+
+            case 2:
+                std::cout << R"(
+                                ______
+                              /     O/\
+                             /      /  \
+                            /O____ /    \
+                            \O    O\  O /
+                             \O    O\  /
+                              \O____O\/
+                                        )"<< std::endl;
+                break;
+            case 3:
+                std::cout << R"(
+                                ______
+                               /     O/\
+                              /   O  /O \
+                             /O____ /    \
+                             \O    O\    /
+                              \O    O\ O/
+                               \O____O\/
+                                        )"<< std::endl;
+                break;
+            case 4:
+                std::cout << R"(
+                                ______
+                               /O    O/\
+                              /      /O \
+                             /O____O/    \
+                             \O    O\    /
+                              \O    O\ O/
+                               \O____O\/
+                                        )"<< std::endl;
+                break;
+            case 5:
+                std::cout << R"(
+                                ______
+                              /O    O/\
+                             /   O  /O \
+                            /O____O/    \
+                            \O    O\    /
+                             \O    O\ O/
+                              \O____O\/
+                                        )"<< std::endl;
+                break;
+            case 6:
+                std::cout << R"(
+                                ______
+                               /O    O/\
+                              /O    O/O \
+                             /O____O/    \
+                             \O    O\    /
+                              \      \ O/
+                               \O____O\/
+                                        )"<< std::endl;
+                break;
+            default:
+                break;
+        }
+        sleep(VITESSE_DEFILEMENT_TEXTE);
+    }    
