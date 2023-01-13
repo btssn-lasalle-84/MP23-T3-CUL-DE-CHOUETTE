@@ -2,10 +2,9 @@
 #include <chrono>
 #include <random>
 #include <chrono>
-
-#ifdef DEBUG_DE
+//#ifdef DEBUG_DE
 #include <iostream>
-#endif
+//#endif
 
 De::De(unsigned int nombreDeFaces /*= NOMBRE_DE_FACES*/) :
     valeur(INDEFINI), nombreDeFaces(nombreDeFaces)
