@@ -1,9 +1,8 @@
 #include "Joueur.h"
 #include "De.h"
-
+#ifdef DEBUG_JOUEUR
 #include <iostream>
-
-#include <algorithm>
+#endif
 #include <cmath>
 
 Joueur::Joueur(const std::string& nomDuJoueur) :

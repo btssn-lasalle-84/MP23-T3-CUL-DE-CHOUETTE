@@ -1,7 +1,9 @@
 #include "Partie.h"
 #include "Joueur.h"
 #include "Ihm.h"
+#ifdef DEBUG_PARTIE
 #include <iostream>
+#endif
 
 Partie::Partie(unsigned int nombreDeJoueurs /*= NB_JOUEURS_PAR_DEFAUT*/,
                Difficulte   difficulte /*= Difficulte::Normal*/,

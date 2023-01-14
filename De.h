@@ -2,7 +2,6 @@
 #define DE_H
 
 #include <string>
-#include <vector>
 
 #define NOMBRE_DE_FACES 6
 #define INDEFINI        0
