@@ -1,11 +1,11 @@
 #ifndef PARTIE_H
 #define PARTIE_H
-#define NOMBRE_VICTOIRE_PAR_DEFAUT   343
-#define NB_JOUEURS_PAR_DEFAUT 2
-//#define DEBUG_PARTIE
 
 #include <list>
-#include <vector>
+
+#define OBJECTIF_PAR_DEFAUT   343
+#define NB_JOUEURS_PAR_DEFAUT 2
+//#define DEBUG_PARTIE
 
 enum Difficulte
 {
@@ -21,7 +21,7 @@ class Partie
 {
   private:
     unsigned int       nombreDeJoueurs;
-    unsigned int       nombreVictoire;
+    unsigned int       objectifNombre;
     Difficulte         difficulte;
     unsigned int       numeroDeTour;
     std::list<Joueur*> joueurs;
@@ -30,10 +30,10 @@ class Partie
   public:
     Partie(unsigned int nombreDeJoueurs = NB_JOUEURS_PAR_DEFAUT,
            Difficulte   difficulte      = Difficulte::Normal,
-           unsigned int NombreVictoire  = NOMBRE_VICTOIRE_PAR_DEFAUT);
+           unsigned int objectifNombre  = OBJECTIF_PAR_DEFAUT);
     ~Partie();
     void         jouer();
-    unsigned int getNombreVictoire() const;
+    unsigned int getObjectifNombre() const;
     unsigned int getNumeroDeTour() const;
     bool         aGagne(unsigned int const& score);
 };

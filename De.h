@@ -1,14 +1,13 @@
 #ifndef DE_H
 #define DE_H
-#define NOMBRE_DE_FACES 6
-#define INDEFINI        0
-#define NOMBRE_MIN_DE   1
-#define NOMBRE_MAX_DE   6
 
 #include <string>
 #include <vector>
 
-
+#define NOMBRE_DE_FACES 6
+#define INDEFINI        0
+#define NOMBRE_MIN_DE   1
+#define NOMBRE_MAX_DE   6
 
 class De
 {

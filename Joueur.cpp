@@ -1,6 +1,8 @@
 #include "Joueur.h"
 #include "De.h"
+
 #include <iostream>
+
 #include <algorithm>
 #include <cmath>
 
@@ -34,10 +36,6 @@ unsigned int Joueur::getScore() const
     return this->compteurDePoints;
 }
 
-unsigned int Joueur::setScore(unsigned int valeur)
-{
-    valeur = compteurDePoints;
-}
 std::string Joueur::getNomJoueur() const
 {
     return this->nomDuJoueur;
@@ -64,21 +62,17 @@ void Joueur::lancerDes()
 #endif
 }
 
-void Joueur::lancerUnDe()
-{
-    des[0]->lancerDe();
-}
-unsigned int Joueur::getPremierDe() const
+unsigned int Joueur::getDes0() const
 {
     return des[0]->getValeurDe();
 }
 
-unsigned int Joueur::getDeuxiemeDe() const
+unsigned int Joueur::getDes1() const
 {
     return des[1]->getValeurDe();
 }
 
-unsigned int Joueur::getTroisiemeDe() const
+unsigned int Joueur::getDes2() const
 {
     return des[2]->getValeurDe();
 }
