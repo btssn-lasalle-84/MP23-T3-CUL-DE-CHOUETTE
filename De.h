@@ -6,9 +6,6 @@
 #define NOMBRE_MAX_DE   6
 
 #include <string>
-#include <vector>
-
-
 
 class De
 {

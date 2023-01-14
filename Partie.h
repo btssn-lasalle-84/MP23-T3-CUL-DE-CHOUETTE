@@ -21,7 +21,7 @@ class Partie
 {
   private:
     unsigned int       nombreDeJoueurs;
-    unsigned int       nombreVictoire;
+    unsigned int       nombreAAtteindre;
     Difficulte         difficulte;
     unsigned int       numeroDeTour;
     std::list<Joueur*> joueurs;
@@ -30,10 +30,10 @@ class Partie
   public:
     Partie(unsigned int nombreDeJoueurs = NB_JOUEURS_PAR_DEFAUT,
            Difficulte   difficulte      = Difficulte::Normal,
-           unsigned int NombreVictoire  = NOMBRE_VICTOIRE_PAR_DEFAUT);
+           unsigned int nombreAAteindre  = NOMBRE_VICTOIRE_PAR_DEFAUT);
     ~Partie();
     void         jouer();
-    unsigned int getNombreVictoire() const;
+    unsigned int getNombreAAtteindre() const;
     unsigned int getNumeroDeTour() const;
     bool         aGagne(unsigned int const& score);
 };

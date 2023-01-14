@@ -7,7 +7,7 @@ Partie::Partie(unsigned int nombreDeJoueurs /*= NB_JOUEURS_PAR_DEFAUT*/,
                Difficulte   difficulte /*= Difficulte::Normal*/,
                unsigned int nombreVictoire /*= NOMBRE_VICTOIRE_PAR_DEFAUT*/) :
     nombreDeJoueurs(nombreDeJoueurs),
-    nombreVictoire(nombreVictoire), difficulte(difficulte), numeroDeTour(0),
+    nombreAAtteindre(nombreAAtteindre), difficulte(difficulte), numeroDeTour(0),
     ihm(new Ihm())
 {
     for(size_t i = 0; i < nombreDeJoueurs; i++)
@@ -37,8 +37,6 @@ void Partie::jouer()
         (*joueur)->setNomduJoueur(ihm->rentrerNomDuJoueur());
     }
 
-    unsigned int tampon3;
-    unsigned int tampon4;
     std::vector<unsigned int> valeursDesQuiCommence;
     unsigned int tampon1;
     unsigned int tampon2;
@@ -66,7 +64,7 @@ void Partie::jouer()
         bool partieNonTerminee = true;
         while(partieNonTerminee)
         {
-            if (tampon3 < tampon4)
+            if (tampon1 < tampon2)
             {
                 for(std::list<Joueur*>::iterator joueur = joueurs.begin();
                 joueur != joueurs.end();
@@ -154,9 +152,9 @@ bool Partie::aGagne(unsigned int const& score)
     return true;
 }
 
-unsigned int Partie::getNombreVictoire() const
+unsigned int Partie::getNombreAAtteindre() const
 {
-    return nombreVictoire;
+    return nombreAAtteindre;
 }
 
 unsigned int Partie::getNumeroDeTour() const
