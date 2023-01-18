@@ -20,13 +20,15 @@ class Ihm
     void        afficherGagnant(const std::string& nomDujoueur,
                                 unsigned int       nombreDeTour) const;
     void        afficherScoreTotal(const std::string& nomDujoueur,
-                                   unsigned int       scoreTotal) const;
+                                   unsigned int       scoreTotal,
+                                   unsigned int       scoreLance) const;
     void        afficherCombinaison(TypeCombinaison combinaison) const;
-    void        afficherLanceDes(const std::string& nomDuJoueur) const;
+    void        afficherQuiLance(const std::string& nomDuJoueur) const;
     void        afficherScoreDuJoueur(const Joueur& joueur) const;
     void        afficherLesDes(unsigned int des0,
                                unsigned int des1,
                                unsigned int des2);
+    void        afficherLanceDe(unsigned int de);
 };
 
 #endif // IHM_H
