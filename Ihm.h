@@ -26,7 +26,7 @@ class Ihm
     void        afficherScoreDuJoueur(const Joueur& joueur) const;
     void        afficherLesDes(unsigned int des0,
                                unsigned int des1,
-                               unsigned int des2) const;
+                               unsigned int des2);
 };
 
 #endif // IHM_H
