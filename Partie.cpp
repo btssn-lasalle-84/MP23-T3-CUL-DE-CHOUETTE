@@ -41,15 +41,6 @@ void Partie::jouer()
     quiCommence();
 }
 
-bool Partie::aGagne(unsigned int const& score)
-{
-    if(score > OBJECTIF_PAR_DEFAUT)
-    {
-        return false;
-    }
-    return true;
-}
-
 void Partie::quiCommence()
 {
     std::vector<int> tamponJoueur;
@@ -90,10 +81,19 @@ void Partie::quiCommence()
     }
 }
 
+bool Partie::aGagne(unsigned int const& score)
+{
+    if(score >= OBJECTIF_PAR_DEFAUT)
+    {
+        return true;
+    }
+    return false;
+}
+
 void Partie::joueur1Commence()
 {
-    bool partieNonTerminee = true;
-    while(partieNonTerminee)
+    bool partieTerminee = false;
+    while(!partieTerminee)
     {
         for(std::list<Joueur*>::iterator joueur = joueurs.begin();
             joueur != joueurs.end();
@@ -117,8 +117,8 @@ void Partie::joueur1Commence()
                       << " score : " << (*joueur)->getScore() << std::endl;
 #endif
             this->numeroDeTour += 1;
-            partieNonTerminee = this->aGagne((*joueur)->getScore());
-            if(partieNonTerminee == false)
+            partieTerminee = this->aGagne((*joueur)->getScore());
+            if(partieTerminee)
             {
                 ihm->afficherGagnant((*joueur)->getNomJoueur(),
                                      this->numeroDeTour);
@@ -130,8 +130,8 @@ void Partie::joueur1Commence()
 
 void Partie::joueur2Commence()
 {
-    bool partieNonTerminee = true;
-    while(partieNonTerminee)
+    bool partieTerminee = false;
+    while(!partieTerminee)
     {
         for(std::list<Joueur*>::reverse_iterator joueur = joueurs.rbegin();
             joueur != joueurs.rend();
@@ -155,8 +155,8 @@ void Partie::joueur2Commence()
                       << " score : " << (*joueur)->getScore() << std::endl;
 #endif
             this->numeroDeTour += 1;
-            partieNonTerminee = this->aGagne((*joueur)->getScore());
-            if(partieNonTerminee == false)
+            partieTerminee = this->aGagne((*joueur)->getScore());
+            if(partieTerminee)
             {
                 ihm->afficherGagnant((*joueur)->getNomJoueur(),
                                      this->numeroDeTour);
