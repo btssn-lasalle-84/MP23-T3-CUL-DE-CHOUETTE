@@ -31,14 +31,17 @@ Partie::~Partie()
 
 void Partie::jouer()
 {
-    ihm->afficherMenuPrincipal();
-    for(std::list<Joueur*>::iterator joueur = joueurs.begin();
-        joueur != joueurs.end();
-        joueur++)
+    do
     {
-        (*joueur)->setNomduJoueur(ihm->rentrerNomDuJoueur());
-    }
-    quiCommence();
+        ihm->afficherMenuPrincipal();
+        for(std::list<Joueur*>::iterator joueur = joueurs.begin();
+            joueur != joueurs.end();
+            joueur++)
+        {
+            (*joueur)->setNomduJoueur(ihm->rentrerNomDuJoueur());
+        }
+        quiCommence();
+    } while(CONSTANTE_BOUCLE_INFINI);
 }
 
 bool Partie::aGagne(unsigned int const& score)
