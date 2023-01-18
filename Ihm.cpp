@@ -112,12 +112,12 @@ S’il y a plusieurs joueurs qui ont fait le plus grand score, ils recommencent 
 
 void Ihm::afficherMenuPrincipal() const
 {
-    std::cout << "-----Bienvenue sur le jeu du CulDeChouette !-----\n "
+    std::cout << "-----Bienvenue sur le jeu du Cul De Chouette !-----\n "
               << std::endl;
     int choix;
     do
     {
-        std::cout << " Pouvons nous commencez ? " << std ::endl;
+        std::cout << " Pouvons nous commencez ? \n" << std ::endl;
         std::cout << "Si vous êtes prêt à jouer, Entrez (1)" << std::endl;
         std::cout << "Si vous souhaitez quitter, Entrez (2)" << std::endl;
         std::cout << "Si vous souhaitez voir les règles, Entrez (3)"
@@ -221,7 +221,7 @@ void Ihm::afficherScoreDuJoueur(const Joueur& joueur) const
 
 void Ihm::afficherLesDes(unsigned int des0,
                          unsigned int des1,
-                         unsigned int des2) const
+                         unsigned int des2)
 {
     std::vector<unsigned int> lesDes;
     lesDes.push_back(des0);
