@@ -33,9 +33,12 @@ class Partie
            unsigned int objectifNombre  = OBJECTIF_PAR_DEFAUT);
     ~Partie();
     void         jouer();
+    void         joueur1Commence();
+    void         joueur2Commence();
     unsigned int getObjectifNombre() const;
     unsigned int getNumeroDeTour() const;
     bool         aGagne(unsigned int const& score);
+    void         quiCommence();
 };
 
 #endif // !PARTIE_H
