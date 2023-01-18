@@ -43,14 +43,9 @@ void Partie::jouer()
 
 bool Partie::aGagne(unsigned int const& score)
 {
-    for(std::list<Joueur*>::iterator joueur = joueurs.begin();
-        joueur != joueurs.end();
-        joueur++)
+    if(score > OBJECTIF_PAR_DEFAUT)
     {
-        if(score > OBJECTIF_PAR_DEFAUT)
-        {
-            return false;
-        }
+        return false;
     }
     return true;
 }
