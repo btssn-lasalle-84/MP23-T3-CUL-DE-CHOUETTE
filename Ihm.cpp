@@ -17,104 +17,97 @@ Ihm::~Ihm()
 void Ihm::afficherRegle() const
 {
     std::cout << std::setfill('-') << std::setw(10) << std::endl
-              << "LE CUL DE CHOUETTE\n"
-              << std::endl
-
-              << "== Le jeu ==\n"
-              << std::endl
-
-              << "Le Cul De Chouette se joue avec trois dés, Le but du jeu est "
-                 "d'atteindre le premier 343 points, en formant différentes "
-                 "combinaisons, chacun à son tour de jeu.\n"
+              << "LE CUL DE CHOUETTE -- version 1.0\n"
               << std::endl;
-    sleep(VITESSE_DEFILEMENT_TEXTE);
+        std::cout << R"(
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
-    std::cout << "== Démarrage ==\n"
-              << std::endl
+                                                                Déroulement du jeu
 
-              << "Chaque joueur lance 1 dé, le joueur qui a fait le plus petit "
-                 "score commence. "
-                 "S'il y a plusieurs joueurs qui ont fait le plus petit score, "
-                 "ils recommencent pour se départager. "
-                 "Le tour de jeu s'effectue ensuite dans le sens inverse des "
-                 "aiguilles d'une montre.\n"
-              << std::endl;
-    sleep(VITESSE_DEFILEMENT_TEXTE);
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
-    std::cout
-      << "== Déroulement du jeu ==\n"
-      << std::endl
+Le but du jeu est d'atteindre ou dépasser 343 points en réalisant différentes combinaisons et en relevant différents défis, chacun à son tour de jeu.
 
-      << "À son tour de jeu, le joueur lance d’abord 2 dés (les Chouettes), "
-         "puis le 3e dé (le Cul). "
-         "On applique alors la règle correspondant à la combinaison formée par "
-         "les trois dés(cf.ci - dessous), "
-         "sans tenir compte de l'ordre dans lequel les dés ont été tirés. "
-         "On peut lancer les trois dés d'un coup pour aller plus vite "
-         "et les règles de l'Achat de Dé et de la Banque ne s'appliquent pas "
-         "lors de la partie.\n"
-      << std::endl;
-    sleep(VITESSE_DEFILEMENT_TEXTE);
+Le score à atteindre (343 points) provient des initiales du nom du jeu : C-D-C, soit les 3e, 4e et 3e lettres de l'alphabet.
 
-    std::cout
-      << "== Les combinaisons ==\n"
-      << std::endl
+Les règles ont été divisées en deux catégories : les combinaisons d'une part, les actions et défis de l'autre,
+et ne sont donc pas classées par niveau de difficulté.
 
-      << "* La Chouette : 2 dés identiques"
+Le système d'étoiles mis en place dans le sommaire est donc une indication permettant d'apprendre les règles par étapes,
+et il est conseillé de maîtriser toutes les règles d'un niveau avant de passer au niveau suivant, les niveaux allant d'une étoile à quatre étoiles.
 
-         "La Chouette a pour valeur le chiffre des deux dés identiques. "
-         "Le joueur qui a lancé les dés gagne les points correspondant au "
-         "carré de la Chouette : "
+Il est cependant tout à fait possible de jouer en ne maîtrisant les règles que d'un niveau.
 
-         "Chouette de 1 = 1 pt, de 2 = 4 pts, "
-         "de 3 = 9 pts,"
-         "de 4 = 16 pts,"
-         "de 5 = 25 pts,"
-         "de 6 = 36 pts.\n"
-      << std::endl;
-    sleep(VITESSE_DEFILEMENT_TEXTE);
+Chaque joueur lance un dé, celui qui fait le plus petit score commence. Si plusieurs joueurs ont fait le plus petit score,
+ils recommencent pour se départager. Le tour de jeu s'effectue ensuite dans le sens inverse des aiguilles d'une montre.
 
-    std::cout
-      << "* La Velute : la somme de 2 dés = le 3e dé "
+À son tour de jeu, le joueur lance deux dés (les chouettes), puis le troisième (le cul).
 
-         "La Velute a pour valeur le chiffre du 3e dé. "
-         "Le joueur qui a lancé les dés gagne les points correspondant au "
-         "double du carré de la Velute :"
+On applique alors la règle correspondant à la combinaison formée par les trois dés, sans tenir compte de l'ordre dans lequel les dés ont été tirés.
 
-         "Velute de 2 = 8 pts, de 3 = 18 pts, de 4 = 32 pts, de 5 = 50 pts, "
-         "de 6 = 72 pts.\n"
-      << std::endl
+Sauf cas particulier, le joueur lançant les dés remporte les points de la combinaison réalisée.
 
-      << "* Le Cul de Chouette : 3 dés identiques "
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
-         "Le Cul de Chouette a pour valeur le chiffre des trois dés "
-         "identiques. "
-         "Le joueur qui a lancé les dés gagne en points 40 + 10 * (le Cul de "
-         "Chouette) : "
+                                                                Les combinaisons
 
-         "CDC de 1 = 50 pts, "
-         "de 2 = 60 pts, "
-         "de 3 = 70 pts, "
-         "de 4 = 80 pts, "
-         "de 5 = 90 pts, "
-         "de 6 = 100 pts.\n"
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
-      << std::endl;
-    sleep(VITESSE_DEFILEMENT_TEXTE);
+La Chouette : Deux dés identiques
 
-    std::cout
-      << "== Fin du jeu ==\n"
-      << std::endl
+La Chouette a pour valeur le chiffre des deux dés identiques.
 
-      << "Lorsqu'un joueur atteint 343 points (ou plus), il est déclaré "
-         "gagnant (le score peut passer dans le négatif, "
-         "mais on considèrera qu'un joueur ayant atteint -343 points devra "
-         "sortir du jeu, il est impossible de miser (pari sur Sirotage, "
-         "application d'un Civet, ...) "
-         "avec un score négatif ou nul).\n"
-      << std::endl;
-    sleep(VITESSE_DEFILEMENT_TEXTE);
-    std::cout << std::setfill('-') << std::setw(10) << std::endl;
+La valeur de la Chouette correspond au carré de la Chouette :
+
+    1. 1 pt
+    2. 4 pts
+    3. 9 pts
+    4. 16 pts
+    5. 25 pts
+    6. 36 pts
+
+La Velute : La somme de deux dés est égale à la valeur du troisième dé
+
+La Velute a pour valeur le chiffre le plus élevé des trois.
+
+La valeur de la Velute correspond au double du carré de la Velute :
+
+    1. 8 pts (seulement pour une Chouette Velute)
+    2. 18 pts
+    3. 32 pts
+    4. 50 pts
+    5. 72 pts
+
+Attention, la combinaison 1, 2, 3 est à première vue une suite, et bien que la règle de la suite soit applicable, c'est également une Velute (1+2 = 3).
+
+La Chouette Velute : Une Chouette + une Velute
+
+La Chouette Velute a la valeur de sa Velute. Le premier joueur qui frappe dans ses mains en criant “Pas mou le caillou!” gagne les points de la Chouette Velute.
+
+Si plusieurs joueurs sont à égalité lors de l'annonce, alors les points de la Chouette Velute sont soustraits des scores des joueurs concernés.
+Le Cul de Chouette : trois dés identiques
+
+La valeur du Cul de Chouette correspond à 40 pts + 10* la valeur du Cul de Chouette :
+
+    1. 50 pts
+    2. 60 pts
+    3. 70 pts
+    4. 80 pts
+    5. 90 pts
+    6. 100 pts
+
+La Suite : trois dés qui se suivent
+
+Tous les joueurs doivent taper du poing sur la table en criant “Grelotte ça picote!”. Le dernier joueur à le faire perd 10 pts.
+
+En cas d'égalité, les joueurs concernés se départagent en criant “Sans fin est la moisissure des bières bretonnes!”.
+S'il y a toujours égalité, les joueurs concernés se départagent en lançant chacun un dé, et celui qui aura fait le plus grand score perd les 10 pts.
+
+Si un joueur annonce jusqu'à “bretonnes” sans qu'il n'y ait eu d'égalité, il y a Bévue.
+
+S’il y a plusieurs joueurs qui ont fait le plus grand score, ils recommencent pour se départager, mais cette fois pour perdre 20 pts, puis 30 pts, etc.
+
+)"<< std::endl;
 }
 
 void Ihm::afficherMenuPrincipal() const
@@ -124,17 +117,21 @@ void Ihm::afficherMenuPrincipal() const
     int choix;
     do
     {
-        std::cout << " Pouvons nous commencez ? "
-                     "Si vous êtes prêt, Entrez (1), si vous voulez "
-                     "les règles, Entrez (2)"
-                  << std::endl
-                  << "Votre réponse : " << std::endl;
+        std::cout << " Pouvons nous commencez ? " << std ::endl;
+        std::cout << "Si vous êtes prêt à jouer, Entrez (1)" << std::endl;
+        std::cout << "Si vous souhaitez quitter, Entrez (2)" << std::endl;
+        std::cout << "Si vous souhaitez voir les règles, Entrez (3)"
+                  << std::endl;
+        std::cout << "Votre réponse : ";
         std::cin >> choix;
 
         switch(choix)
         {
-            case 2:
+            case 3:
                 afficherRegle();
+                break;
+            case 2:
+                exit(EXIT_SUCCESS);
                 break;
             default:
                 break;
@@ -165,11 +162,14 @@ void Ihm::afficherLanceDes(const std::string& nomDuJoueur) const
     int choix;
     do
     {
-        std::cout << "Pour lancer les dés, appuyez sur (1) : \n" << std::endl;
+        std::cout << "Pour lancer les dés, appuyez sur (1) : " << std::endl;
+        std::cout << "Pour quittez, appuyez sur (2) : ";
         std::cin >> choix;
-        if(choix != 1)
+        if(choix == 2)
         {
-            std::cout << "Appuyer sur (1), svp :) " << std::endl;
+            std::cout << "Partie terminé !\n" << std::endl;
+            sleep(VITESSE_DEFILEMENT_TEXTE);
+            exit(EXIT_SUCCESS);
         }
     } while(choix != 1);
 
@@ -208,7 +208,7 @@ void Ihm::afficherCombinaison(TypeCombinaison combinaison) const
         default:
             break;
     }
-    std::cout << "La combinaison réalisé est : " << nomCombinaison << "\n"
+    std::cout << "La combinaison réalisée est : " << nomCombinaison << "\n"
               << std::endl;
 }
 
@@ -219,7 +219,7 @@ void Ihm::afficherScoreDuJoueur(const Joueur& joueur) const
 
 void Ihm::afficherLesDes(unsigned int des0,
                          unsigned int des1,
-                         unsigned int des2)
+                         unsigned int des2) const
 {
     std::vector<unsigned int> lesDes;
     lesDes.push_back(des0);
