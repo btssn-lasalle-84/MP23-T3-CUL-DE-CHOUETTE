@@ -116,6 +116,9 @@ TypeCombinaison Joueur::identifierCombinaison()
         return TypeCombinaison::Chouette;
     else
     {
+        this->scoreLance =
+          (this->des[0]->getValeurDe() + this->des[1]->getValeurDe() +
+           this->des[2]->getValeurDe());
         this->compteurDePoints +=
           (this->des[0]->getValeurDe() + this->des[1]->getValeurDe() +
            this->des[2]->getValeurDe());
