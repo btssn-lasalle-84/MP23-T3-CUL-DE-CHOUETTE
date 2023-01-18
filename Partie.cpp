@@ -44,20 +44,6 @@ void Partie::jouer()
     } while(CONSTANTE_BOUCLE_INFINI);
 }
 
-bool Partie::aGagne(unsigned int const& score)
-{
-    for(std::list<Joueur*>::iterator joueur = joueurs.begin();
-        joueur != joueurs.end();
-        joueur++)
-    {
-        if(score > OBJECTIF_PAR_DEFAUT)
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
 void Partie::quiCommence()
 {
     std::vector<int> tamponJoueur;
@@ -68,8 +54,8 @@ void Partie::quiCommence()
     {
         (*joueur)->lancerDe();
         ihm->afficherQuiLance((*joueur)->getNomJoueur());
-        ihm->afficherLanceDe((*joueur)->getDes0());
-        tamponJoueur.push_back((*joueur)->getDes0());
+        ihm->afficherLanceDe((*joueur)->getDes(0));
+        tamponJoueur.push_back((*joueur)->getDes(0));
     }
 
     while(tamponJoueur[0] == tamponJoueur[1])
@@ -82,8 +68,8 @@ void Partie::quiCommence()
         {
             (*joueur)->lancerDe();
             ihm->afficherQuiLance((*joueur)->getNomJoueur());
-            ihm->afficherLanceDe((*joueur)->getDes0());
-            tamponJoueur.push_back((*joueur)->getDes0());
+            ihm->afficherLanceDe((*joueur)->getDes(0));
+            tamponJoueur.push_back((*joueur)->getDes(0));
         }
     }
 
@@ -98,10 +84,19 @@ void Partie::quiCommence()
     }
 }
 
+bool Partie::aGagne(unsigned int const& score)
+{
+    if(score >= OBJECTIF_PAR_DEFAUT)
+    {
+        return true;
+    }
+    return false;
+}
+
 void Partie::joueur1Commence()
 {
-    bool partieNonTerminee = true;
-    while(partieNonTerminee)
+    bool partieTerminee = false;
+    while(!partieTerminee)
     {
         for(std::list<Joueur*>::iterator joueur = joueurs.begin();
             joueur != joueurs.end();
@@ -109,9 +104,9 @@ void Partie::joueur1Commence()
         {
             ihm->afficherQuiLance((*joueur)->getNomJoueur());
             (*joueur)->lancerDes();
-            ihm->afficherLesDes((*joueur)->getDes0(),
-                                (*joueur)->getDes1(),
-                                (*joueur)->getDes2());
+            ihm->afficherLesDes((*joueur)->getDes(0),
+                                (*joueur)->getDes(1),
+                                (*joueur)->getDes(2));
             ihm->afficherCombinaison((*joueur)->identifierCombinaison());
             ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
                                     (*joueur)->getScore(),
@@ -125,8 +120,8 @@ void Partie::joueur1Commence()
                       << " score : " << (*joueur)->getScore() << std::endl;
 #endif
             this->numeroDeTour += 1;
-            partieNonTerminee = this->aGagne((*joueur)->getScore());
-            if(partieNonTerminee == false)
+            partieTerminee = this->aGagne((*joueur)->getScore());
+            if(partieTerminee)
             {
                 ihm->afficherGagnant((*joueur)->getNomJoueur(),
                                      this->numeroDeTour);
@@ -138,8 +133,8 @@ void Partie::joueur1Commence()
 
 void Partie::joueur2Commence()
 {
-    bool partieNonTerminee = true;
-    while(partieNonTerminee)
+    bool partieTerminee = false;
+    while(!partieTerminee)
     {
         for(std::list<Joueur*>::reverse_iterator joueur = joueurs.rbegin();
             joueur != joueurs.rend();
@@ -147,9 +142,9 @@ void Partie::joueur2Commence()
         {
             ihm->afficherQuiLance((*joueur)->getNomJoueur());
             (*joueur)->lancerDes();
-            ihm->afficherLesDes((*joueur)->getDes0(),
-                                (*joueur)->getDes1(),
-                                (*joueur)->getDes2());
+            ihm->afficherLesDes((*joueur)->getDes(0),
+                                (*joueur)->getDes(1),
+                                (*joueur)->getDes(2));
             ihm->afficherCombinaison((*joueur)->identifierCombinaison());
             ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
                                     (*joueur)->getScore(),
@@ -163,8 +158,8 @@ void Partie::joueur2Commence()
                       << " score : " << (*joueur)->getScore() << std::endl;
 #endif
             this->numeroDeTour += 1;
-            partieNonTerminee = this->aGagne((*joueur)->getScore());
-            if(partieNonTerminee == false)
+            partieTerminee = this->aGagne((*joueur)->getScore());
+            if(partieTerminee)
             {
                 ihm->afficherGagnant((*joueur)->getNomJoueur(),
                                      this->numeroDeTour);

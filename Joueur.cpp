@@ -66,19 +66,9 @@ void Joueur::lancerDe()
     des[0]->lancerDe();
 }
 
-unsigned int Joueur::getDes0() const
+unsigned int Joueur::getDes(int numeroDe) const
 {
-    return des[0]->getValeurDe();
-}
-
-unsigned int Joueur::getDes1() const
-{
-    return des[1]->getValeurDe();
-}
-
-unsigned int Joueur::getDes2() const
-{
-    return des[2]->getValeurDe();
+    return des[numeroDe]->getValeurDe();
 }
 
 void Joueur::trierDes()
@@ -131,8 +121,8 @@ bool Joueur::identifierCombinaisonChouette()
     if(this->des[1]->getValeurDe() == this->des[0]->getValeurDe() ||
        this->des[1]->getValeurDe() == this->des[2]->getValeurDe())
     {
-        this->scoreLance = pow(this->des[1]->getValeurDe(), 2);
-        this->compteurDePoints += pow(this->des[1]->getValeurDe(), 2);
+        this->scoreLance = pow(this->des[1]->getValeurDe(), 2 + 10);
+        this->compteurDePoints += (pow(this->des[1]->getValeurDe(), 2) + 10);
         return true;
     }
     return false;

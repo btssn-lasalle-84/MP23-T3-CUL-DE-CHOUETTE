@@ -38,9 +38,7 @@ class Joueur
     std::string     getNomJoueur() const;
     void            lancerDes();
     void            lancerDe();
-    unsigned int    getDes0() const;
-    unsigned int    getDes1() const;
-    unsigned int    getDes2() const;
+    unsigned int    getDes(int numeroDe) const;
     unsigned int    getScorelance() const;
     void            setNomduJoueur(const std::string& nomDuJoueur);
     void            setDe(unsigned int valeur);
