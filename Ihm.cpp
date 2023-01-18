@@ -219,7 +219,7 @@ void Ihm::afficherScoreDuJoueur(const Joueur& joueur) const
 
 void Ihm::afficherLesDes(unsigned int des0,
                          unsigned int des1,
-                         unsigned int des2)
+                         unsigned int des2) const
 {
     std::vector<unsigned int> lesDes;
     lesDes.push_back(des0);
