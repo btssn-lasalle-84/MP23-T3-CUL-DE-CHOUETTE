@@ -60,8 +60,8 @@ void Partie::quiCommence()
     {
         (*joueur)->lancerDe();
         ihm->afficherQuiLance((*joueur)->getNomJoueur());
-        ihm->afficherLanceDe((*joueur)->getDes0());
-        tamponJoueur.push_back((*joueur)->getDes0());
+        ihm->afficherLanceDe((*joueur)->getDes(0));
+        tamponJoueur.push_back((*joueur)->getDes(0));
     }
 
     while(tamponJoueur[0] == tamponJoueur[1])
@@ -74,8 +74,8 @@ void Partie::quiCommence()
         {
             (*joueur)->lancerDe();
             ihm->afficherQuiLance((*joueur)->getNomJoueur());
-            ihm->afficherLanceDe((*joueur)->getDes0());
-            tamponJoueur.push_back((*joueur)->getDes0());
+            ihm->afficherLanceDe((*joueur)->getDes(0));
+            tamponJoueur.push_back((*joueur)->getDes(0));
         }
     }
 
@@ -101,9 +101,9 @@ void Partie::joueur1Commence()
         {
             ihm->afficherQuiLance((*joueur)->getNomJoueur());
             (*joueur)->lancerDes();
-            ihm->afficherLesDes((*joueur)->getDes0(),
-                                (*joueur)->getDes1(),
-                                (*joueur)->getDes2());
+            ihm->afficherLesDes((*joueur)->getDes(0),
+                                (*joueur)->getDes(1),
+                                (*joueur)->getDes(2));
             ihm->afficherCombinaison((*joueur)->identifierCombinaison());
             ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
                                     (*joueur)->getScore(),
@@ -139,9 +139,9 @@ void Partie::joueur2Commence()
         {
             ihm->afficherQuiLance((*joueur)->getNomJoueur());
             (*joueur)->lancerDes();
-            ihm->afficherLesDes((*joueur)->getDes0(),
-                                (*joueur)->getDes1(),
-                                (*joueur)->getDes2());
+            ihm->afficherLesDes((*joueur)->getDes(0),
+                                (*joueur)->getDes(1),
+                                (*joueur)->getDes(2));
             ihm->afficherCombinaison((*joueur)->identifierCombinaison());
             ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
                                     (*joueur)->getScore(),
