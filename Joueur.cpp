@@ -1,13 +1,12 @@
 #include "Joueur.h"
 #include "De.h"
-
+#ifdef DEBUG_JOUEUR
 #include <iostream>
-
-#include <algorithm>
+#endif
 #include <cmath>
 
 Joueur::Joueur(const std::string& nomDuJoueur) :
-    nomDuJoueur(nomDuJoueur), compteurDePoints(NOMBRE_DE_POINTS)
+    nomDuJoueur(nomDuJoueur), scoreLance(0), compteurDePoints(NOMBRE_DE_POINTS)
 {
 #ifdef DEBUG_JOUEUR
     std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__ << " " << this
@@ -62,6 +61,11 @@ void Joueur::lancerDes()
 #endif
 }
 
+void Joueur::lancerDe()
+{
+    des[0]->lancerDe();
+}
+
 unsigned int Joueur::getDes0() const
 {
     return des[0]->getValeurDe();
@@ -93,8 +97,14 @@ void Joueur::trierDes()
     }
 }
 
+unsigned int Joueur::getScorelance() const
+{
+    return this->scoreLance;
+}
+
 TypeCombinaison Joueur::identifierCombinaison()
 {
+    this->scoreLance = 0;
     this->trierDes();
     if(identifierCombinaisonCulDeChouette())
         return TypeCombinaison::CulDeChouette;
@@ -106,6 +116,9 @@ TypeCombinaison Joueur::identifierCombinaison()
         return TypeCombinaison::Chouette;
     else
     {
+        this->scoreLance =
+          (this->des[0]->getValeurDe() + this->des[1]->getValeurDe() +
+           this->des[2]->getValeurDe());
         this->compteurDePoints +=
           (this->des[0]->getValeurDe() + this->des[1]->getValeurDe() +
            this->des[2]->getValeurDe());
@@ -118,6 +131,7 @@ bool Joueur::identifierCombinaisonChouette()
     if(this->des[1]->getValeurDe() == this->des[0]->getValeurDe() ||
        this->des[1]->getValeurDe() == this->des[2]->getValeurDe())
     {
+        this->scoreLance = pow(this->des[1]->getValeurDe(), 2);
         this->compteurDePoints += pow(this->des[1]->getValeurDe(), 2);
         return true;
     }
@@ -129,6 +143,7 @@ bool Joueur::identifierCombinaisonVelute()
     if((this->des[0]->getValeurDe() + this->des[1]->getValeurDe()) ==
        this->des[2]->getValeurDe())
     {
+        this->scoreLance = pow(this->des[2]->getValeurDe(), 2) * 2;
         this->compteurDePoints += (pow(this->des[2]->getValeurDe(), 2) * 2);
         return true;
     }
@@ -140,6 +155,7 @@ bool Joueur::identifierCombinaisonCulDeChouette()
     if(this->des[0]->getValeurDe() == this->des[1]->getValeurDe() &&
        this->des[0]->getValeurDe() == this->des[2]->getValeurDe())
     {
+        this->scoreLance = (40 + 10 * this->des[0]->getValeurDe());
         this->compteurDePoints += (40 + 10 * this->des[0]->getValeurDe());
         return true;
     }
@@ -151,6 +167,7 @@ bool Joueur::identifierCombinaisonSuite()
     if(this->des[1]->getValeurDe() == (this->des[0]->getValeurDe() + 1) &&
        this->des[2]->getValeurDe() == (this->des[1]->getValeurDe() + 1))
     {
+        this->scoreLance = (5 * this->des[2]->getValeurDe());
         this->compteurDePoints += (5 * this->des[2]->getValeurDe());
         return true;
     }

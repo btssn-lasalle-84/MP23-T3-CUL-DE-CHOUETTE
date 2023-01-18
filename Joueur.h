@@ -24,6 +24,7 @@ class Joueur
   private:
     std::string      nomDuJoueur;
     std::vector<De*> des;
+    unsigned int     scoreLance;
     unsigned int     compteurDePoints;
     bool             identifierCombinaisonChouette();
     bool             identifierCombinaisonVelute();
@@ -36,9 +37,11 @@ class Joueur
     unsigned int    getScore() const;
     std::string     getNomJoueur() const;
     void            lancerDes();
+    void            lancerDe();
     unsigned int    getDes0() const;
     unsigned int    getDes1() const;
     unsigned int    getDes2() const;
+    unsigned int    getScorelance() const;
     void            setNomduJoueur(const std::string& nomDuJoueur);
     void            setDe(unsigned int valeur);
     void            trierDes();
