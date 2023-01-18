@@ -180,7 +180,7 @@ void Ihm::afficherScoreTotal(const std::string& nomDujoueur,
                              unsigned int       scoreTotal,
                              unsigned int       scoreLance) const
 {
-    std::cout << "le score de se lancé est de :" << scoreLance << std::endl
+    std::cout << "le score de ce lancé est de :" << scoreLance << std::endl
               << " le score total de " << nomDujoueur
               << " est de : " << scoreTotal << "\n"
               << std::endl;
