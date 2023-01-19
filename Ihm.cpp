@@ -164,10 +164,11 @@ void Ihm::afficherQuiLance(const std::string& nomDuJoueur) const
     {
         int choix;
         do
-        std::cout << "Pour lancer les dés, appuyez sur (1) / Pour quittez, "
-                     "appuyez sur (2) : ";
-        std::cin >> choix;
-        if(choix == 2)
+        {
+            std::cout << "Pour lancer les dés, appuyez sur (1) / Pour quittez, "
+                         "appuyez sur (2) : ";
+            std::cin >> choix;
+            if(choix == 2)
             {
                 std::cout << "Partie terminé !\n" << std::endl;
                 sleep(VITESSE_DEFILEMENT_TEXTE);
