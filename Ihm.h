@@ -2,6 +2,8 @@
 #define IHM_H
 
 #define VITESSE_DEFILEMENT_TEXTE 1
+#define VERSION                  2
+
 #include <string>
 #include "Joueur.h"
 
@@ -18,7 +20,8 @@ class Ihm
     void        afficherMenuPrincipal() const;
     std::string rentrerNomDuJoueur() const;
     void        afficherGagnant(const std::string& nomDujoueur,
-                                unsigned int       nombreDeTour) const;
+                                unsigned int       nombreDeTour,
+                                unsigned int       score) const;
     void        afficherScoreTotal(const std::string& nomDujoueur,
                                    unsigned int       scoreTotal,
                                    unsigned int       scoreLance) const;
