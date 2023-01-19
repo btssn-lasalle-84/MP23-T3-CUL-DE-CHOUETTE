@@ -6,7 +6,7 @@
 
 #define NOMBRE_DE_DES    3
 #define NOMBRE_DE_POINTS 0
-#define DEBUG_JOUEUR
+//#define DEBUG_JOUEUR
 
 enum TypeCombinaison
 {
