@@ -7,10 +7,12 @@
 
 Partie::Partie(unsigned int nombreDeJoueurs /*= NB_JOUEURS_PAR_DEFAUT*/,
                Difficulte   difficulte /*= Difficulte::Normal*/,
-               unsigned int objectifNombre /*= OBJECTIF_PAR_DEFAUT*/) :
+               unsigned int objectifNombre /*= OBJECTIF_PAR_DEFAUT*/,
+               unsigned int choixDuTypeDePartie /*= 0 Par défaut*/,
+               Ihm*         ihm) :
     nombreDeJoueurs(nombreDeJoueurs),
     objectifNombre(objectifNombre), difficulte(difficulte), numeroDeTour(0),
-    ihm(new Ihm())
+    choixDuTypeDePartie(choixDuTypeDePartie), ihm(new Ihm())
 {
     for(size_t i = 0; i < nombreDeJoueurs; i++)
     {
@@ -34,13 +36,36 @@ void Partie::jouer()
     do
     {
         ihm->afficherMenuPrincipal();
-        for(std::list<Joueur*>::iterator joueur = joueurs.begin();
-            joueur != joueurs.end();
-            joueur++)
+        choixPartie(ihm->entrerChoixTypePartie());
+        if(getChoixDuTypeDePartie() == 1)
         {
-            (*joueur)->setNomduJoueur(ihm->rentrerNomDuJoueur());
+            creerJoueurEtJoueur();
+            for(std::list<Joueur*>::iterator joueur = joueurs.begin();
+                joueur != joueurs.end();
+                joueur++)
+            {
+                (*joueur)->setNomduJoueur(ihm->rentrerNomDuJoueur());
+            }
+            quiCommence();
+            for(std::list<Joueur*>::iterator joueur = joueurs.begin();
+                joueur != joueurs.end();
+                joueur++)
+            {
+                delete *joueur;
+            }
         }
-        quiCommence();
+        else if(getChoixDuTypeDePartie() == 2)
+        {
+            creerJoueurEtBot();
+            quiCommence();
+            for(std::list<Joueur*>::iterator joueur = joueurs.begin();
+                joueur != joueurs.end();
+                joueur++)
+            {
+                delete *joueur;
+            }
+        }
+
     } while(CONSTANTE_BOUCLE_INFINI);
 }
 
@@ -177,4 +202,55 @@ unsigned int Partie::getObjectifNombre() const
 unsigned int Partie::getNumeroDeTour() const
 {
     return numeroDeTour;
+}
+
+void Partie::choixPartie(unsigned int choixDuJoueur)
+{
+    if(choixDuJoueur == 2)
+    {
+        choixDuTypeDePartie = 2;
+    }
+
+    else if(choixDuJoueur == 1)
+    {
+        choixDuTypeDePartie = 1;
+    }
+}
+
+void Partie::creerJoueurEtBot()
+{
+    for(size_t i = 0; i < 2; i++)
+    {
+        joueurs.pop_back();
+    }
+
+    for(size_t i = 0; i < 1; i++)
+    {
+        joueurs.push_back(new Joueur());
+    }
+
+    for(std::list<Joueur*>::iterator joueur = joueurs.begin();
+        joueur != joueurs.end();
+        joueur++)
+    {
+        (*joueur)->setNomduJoueur(ihm->rentrerNomDuJoueur());
+    }
+
+    for(size_t i = 0; i < 1; i++)
+    {
+        joueurs.push_back(new Joueur(NOM_BOT));
+    }
+}
+
+void Partie::creerJoueurEtJoueur()
+{
+    for(size_t i = 0; i < 2; i++)
+    {
+        joueurs.push_back(new Joueur());
+    }
+}
+
+unsigned int Partie::getChoixDuTypeDePartie()
+{
+    return choixDuTypeDePartie;
 }
