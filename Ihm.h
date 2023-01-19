@@ -3,6 +3,8 @@
 
 #define VITESSE_DEFILEMENT_TEXTE 1
 #define NOM_BOT                  "BOT"
+#define VERSION                  2
+
 #include <string>
 #include "Joueur.h"
 

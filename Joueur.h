@@ -42,7 +42,6 @@ class Joueur
     unsigned int    getScorelance() const;
     void            setNomduJoueur(const std::string& nomDuJoueur);
     void            setDe(unsigned int valeur);
-    void            trierDes();
     TypeCombinaison identifierCombinaison();
 };
 

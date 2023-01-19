@@ -149,7 +149,8 @@ void Partie::joueur1Commence()
             if(partieTerminee)
             {
                 ihm->afficherGagnant((*joueur)->getNomJoueur(),
-                                     this->numeroDeTour);
+                                     this->numeroDeTour,
+                                     (*joueur)->getScore());
                 break;
             }
         }
@@ -187,7 +188,8 @@ void Partie::joueur2Commence()
             if(partieTerminee)
             {
                 ihm->afficherGagnant((*joueur)->getNomJoueur(),
-                                     this->numeroDeTour);
+                                     this->numeroDeTour,
+                                     (*joueur)->getScorelance());
                 break;
             }
         }
