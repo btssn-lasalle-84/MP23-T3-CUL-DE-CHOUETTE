@@ -112,8 +112,8 @@ S’il y a plusieurs joueurs qui ont fait le plus grand score, ils recommencent 
 
 void Ihm::afficherMenuPrincipal() const
 {
-    std::cout << "-----Bienvenue sur le jeu du Cul De Chouette !-----\n "
-              << std::endl;
+    std::cout << "-----Bienvenue sur le jeu du Cul De Chouette ! Version "
+              << VERSION << "-----\n " << std::endl;
     int choix;
     do
     {
@@ -142,17 +142,18 @@ void Ihm::afficherMenuPrincipal() const
 std::string Ihm::rentrerNomDuJoueur() const
 {
     std::string nomDuJoueur;
-    std::cout << "Entrez le nom du joueur" << std::endl;
+    std::cout << "Entrez le nom du joueur : ";
     std::cin >> nomDuJoueur;
-    std::cout << std::endl;
     return nomDuJoueur;
 }
 
 void Ihm::afficherGagnant(const std::string& nomDujoueur,
-                          unsigned int       nombreDeTour) const
+                          unsigned int       nombreDeTour,
+                          unsigned int       score) const
 {
     std::cout << "Le gagnant est : " << nomDujoueur << " en " << nombreDeTour
-              << " coups, Bravo a lui ! \n"
+              << " coups."
+              << " Avec un score de : " << score << "coups, Bravo a lui ! \n"
               << std::endl;
 }
 
@@ -162,8 +163,8 @@ void Ihm::afficherQuiLance(const std::string& nomDuJoueur) const
     int choix;
     do
     {
-        std::cout << "Pour lancer les dés, appuyez sur (1) : " << std::endl;
-        std::cout << "Pour quittez, appuyez sur (2) : ";
+        std::cout << "Pour lancer les dés, appuyez sur (1) / Pour quittez, "
+                     "appuyez sur (2) : ";
         std::cin >> choix;
         if(choix == 2)
         {
