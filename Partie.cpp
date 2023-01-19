@@ -110,7 +110,7 @@ void Partie::joueur1Commence()
             ihm->afficherCombinaison((*joueur)->identifierCombinaison());
             ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
                                     (*joueur)->getScore(),
-                                    (*joueur)->getScorelance());
+                                    (*joueur)->getScoreLance());
 #ifdef DEBUG_PARTIE
             std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
                       << " Joueur = " << *joueur << std::endl;
@@ -149,7 +149,7 @@ void Partie::joueur2Commence()
             ihm->afficherCombinaison((*joueur)->identifierCombinaison());
             ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
                                     (*joueur)->getScore(),
-                                    (*joueur)->getScorelance());
+                                    (*joueur)->getScoreLance());
 #ifdef DEBUG_PARTIE
             std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
                       << " Joueur = " << *joueur << std::endl;
@@ -164,7 +164,7 @@ void Partie::joueur2Commence()
             {
                 ihm->afficherGagnant((*joueur)->getNomJoueur(),
                                      this->numeroDeTour,
-                                     (*joueur)->getScorelance());
+                                     (*joueur)->getScoreLance());
                 break;
             }
         }

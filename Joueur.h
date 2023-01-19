@@ -39,7 +39,7 @@ class Joueur
     void            lancerDes();
     void            lancerDe();
     unsigned int    getDes(int numeroDe) const;
-    unsigned int    getScorelance() const;
+    unsigned int    getScoreLance() const;
     void            setNomduJoueur(const std::string& nomDuJoueur);
     void            setDe(unsigned int valeur);
     TypeCombinaison identifierCombinaison();

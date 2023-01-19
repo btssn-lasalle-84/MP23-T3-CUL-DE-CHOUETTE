@@ -73,7 +73,7 @@ unsigned int Joueur::getDes(int numeroDe) const
     return des[numeroDe]->getValeurDe();
 }
 
-unsigned int Joueur::getScorelance() const
+unsigned int Joueur::getScoreLance() const
 {
     return this->scoreLance;
 }
