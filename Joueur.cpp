@@ -121,7 +121,7 @@ bool Joueur::identifierCombinaisonChouette()
     if(this->des[1]->getValeurDe() == this->des[0]->getValeurDe() ||
        this->des[1]->getValeurDe() == this->des[2]->getValeurDe())
     {
-        this->scoreLance = pow(this->des[1]->getValeurDe(), 2 + 10);
+        this->scoreLance = (pow(this->des[1]->getValeurDe(), 2) + 10);
         this->compteurDePoints += (pow(this->des[1]->getValeurDe(), 2) + 10);
         return true;
     }
