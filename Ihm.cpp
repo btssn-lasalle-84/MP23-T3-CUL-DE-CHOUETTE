@@ -142,7 +142,7 @@ void Ihm::afficherMenuPrincipal() const
 std::string Ihm::rentrerNomDuJoueur() const
 {
     std::string nomDuJoueur;
-    std::cout << "Entrez le nom du joueur : ";
+    std::cout << "\nEntrez le nom du joueur : ";
     std::cin >> nomDuJoueur;
     return nomDuJoueur;
 }
@@ -160,21 +160,29 @@ void Ihm::afficherGagnant(const std::string& nomDujoueur,
 void Ihm::afficherQuiLance(const std::string& nomDuJoueur) const
 {
     std::cout << nomDuJoueur << " : C'est à votre tour !\n" << std::endl;
-    int choix;
-    do
+    if(nomDuJoueur != NOM_BOT)
     {
-        std::cout << "Pour lancer les dés, appuyez sur (1) / Pour quittez, "
-                     "appuyez sur (2) : ";
-        std::cin >> choix;
-        if(choix == 2)
+        int choix;
+        do
         {
-            std::cout << "Partie terminé !\n" << std::endl;
-            sleep(VITESSE_DEFILEMENT_TEXTE);
-            exit(EXIT_SUCCESS);
-        }
-    } while(choix != 1);
+            std::cout << "Pour lancer les dés, appuyez sur (1) / Pour quittez, "
+                         "appuyez sur (2) : ";
+            std::cin >> choix;
+            if(choix == 2)
+            {
+                std::cout << "Partie terminé !\n" << std::endl;
+                sleep(VITESSE_DEFILEMENT_TEXTE);
+                exit(EXIT_SUCCESS);
+            }
+        } while(choix != 1);
+        std::cout << "\n" << nomDuJoueur << " lance les dès !\n" << std::endl;
+    }
 
-    std::cout << "\n" << nomDuJoueur << " lance les dès !\n" << std::endl;
+    else
+    {
+        sleep(VITESSE_DEFILEMENT_TEXTE);
+        std::cout << "\n" << nomDuJoueur << " lance les dès !\n" << std::endl;
+    }
 }
 
 void Ihm::afficherScoreTotal(const std::string& nomDujoueur,
@@ -391,4 +399,27 @@ void Ihm::afficherLanceDuDebut()
 {
     std::cout << std::endl;
     std::cout << "Lancer 1 dé pour savoir qui commence" << std::endl;
+}
+
+unsigned int Ihm::entrerChoixTypePartie()
+{
+    unsigned int choixUtilisateur;
+    std::cout
+      << "\nTypes de Partie : Si vous faites un autre "
+         "choix que 1 ou 2, par défaut on lance une partie contre un BOT"
+      << std::endl;
+    std::cout << "\nPartie 1 vs 1 = (1) / Partie 1 vs BOT = (2) : ";
+    std::cin >> choixUtilisateur;
+    if((choixUtilisateur == 1) || (choixUtilisateur == 2))
+    {
+        return choixUtilisateur;
+    }
+
+    else
+        return 2;
+}
+
+void Ihm::afficherJoueur(const std::string& nomJoueur)
+{
+    std::cout << "joueur : " << nomJoueur << std::endl;
 }
