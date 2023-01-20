@@ -35,7 +35,7 @@ class Ihm
     void         afficherLanceDe(unsigned int de);
     unsigned int entrerChoixTypePartie();
     void         afficherJoueur(const std::string& nomJoueur);
-    void        afficherLanceDuDebut();
+    void         afficherLanceDuDebut();
 };
 
 #endif // IHM_H
