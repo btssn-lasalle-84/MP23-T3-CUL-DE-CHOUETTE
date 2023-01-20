@@ -47,12 +47,12 @@ void Partie::jouer()
 void Partie::quiCommence()
 {
     std::vector<int> tamponJoueur;
-
     for(std::list<Joueur*>::iterator joueur = joueurs.begin();
         joueur != joueurs.end();
         joueur++)
     {
         (*joueur)->lancerDe();
+        ihm->afficherLanceDuDebut();
         ihm->afficherQuiLance((*joueur)->getNomJoueur());
         ihm->afficherLanceDe((*joueur)->getDes(0));
         tamponJoueur.push_back((*joueur)->getDes(0));

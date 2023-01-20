@@ -32,6 +32,7 @@ class Ihm
                                unsigned int des1,
                                unsigned int des2);
     void        afficherLanceDe(unsigned int de);
+    void        afficherLanceDuDebut();
 };
 
 #endif // IHM_H

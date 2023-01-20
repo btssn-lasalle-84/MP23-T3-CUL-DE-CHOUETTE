@@ -386,3 +386,9 @@ void Ihm::afficherLanceDe(unsigned int de)
             break;
     }
 }
+
+void Ihm::afficherLanceDuDebut()
+{
+    std::cout << std::endl;
+    std::cout << "Lancer 1 dé pour savoir qui commence" << std::endl;
+}
