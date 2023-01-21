@@ -77,7 +77,7 @@ void Partie::quiCommence()
         joueur != joueurs.end();
         joueur++)
     {
-        (*joueur)->lancerDe();
+        (*joueur)->lancerDes(0);
         ihm->afficherQuiLance((*joueur)->getNomJoueur());
         ihm->afficherLanceDe((*joueur)->getDes(0));
         tamponJoueur.push_back((*joueur)->getDes(0));
@@ -91,7 +91,7 @@ void Partie::quiCommence()
             joueur != joueurs.end();
             joueur++)
         {
-            (*joueur)->lancerDe();
+            (*joueur)->lancerDes(0);
             ihm->afficherQuiLance((*joueur)->getNomJoueur());
             ihm->afficherLanceDe((*joueur)->getDes(0));
             tamponJoueur.push_back((*joueur)->getDes(0));
@@ -128,7 +128,7 @@ void Partie::joueur1Commence()
             joueur++)
         {
             ihm->afficherQuiLance((*joueur)->getNomJoueur());
-            (*joueur)->lancerDes();
+            (*joueur)->lancerDes(2);
             ihm->afficherLesDes((*joueur)->getDes(0),
                                 (*joueur)->getDes(1),
                                 (*joueur)->getDes(2));
@@ -167,7 +167,7 @@ void Partie::joueur2Commence()
             joueur++)
         {
             ihm->afficherQuiLance((*joueur)->getNomJoueur());
-            (*joueur)->lancerDes();
+            (*joueur)->lancerDes(2);
             ihm->afficherLesDes((*joueur)->getDes(0),
                                 (*joueur)->getDes(1),
                                 (*joueur)->getDes(2));
