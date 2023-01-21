@@ -46,11 +46,16 @@ void Joueur::setNomduJoueur(const std::string& nomDuJoueur)
     this->nomDuJoueur = nomDuJoueur;
 }
 
-void Joueur::lancerDes()
+int Joueur::lancerDes(int n)
 {
-    for(size_t i = 0; i < des.size(); i++)
+    des[n]->lancerDe();
+    if(n == 0)
     {
-        des[i]->lancerDe();
+        return 0;
+    }
+    else
+    {
+        lancerDes(n - 1);
     }
 #ifdef DEBUG_JOUEUR
     for(size_t i = 0; i < des.size(); i++)
@@ -61,11 +66,6 @@ void Joueur::lancerDes()
     }
 
 #endif
-}
-
-void Joueur::lancerDe()
-{
-    des[0]->lancerDe();
 }
 
 unsigned int Joueur::getDes(int numeroDe) const
