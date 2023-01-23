@@ -153,7 +153,7 @@ void Ihm::afficherGagnant(const std::string& nomDujoueur,
 {
     std::cout << "Le gagnant est : " << nomDujoueur << " en " << nombreDeTour
               << " coups."
-              << " Avec un score de : " << score << "coups, Bravo a lui ! \n"
+              << " Avec un score de : " << score << ", Bravo a lui ! \n"
               << std::endl;
 }
 
@@ -416,4 +416,14 @@ unsigned int Ihm::entrerChoixTypePartie()
 void Ihm::afficherJoueur(const std::string& nomJoueur)
 {
     std::cout << "joueur : " << nomJoueur << std::endl;
+}
+
+unsigned int Ihm::choisirDifficulte()
+{
+    int choix = 0;
+    std::cout << "Choisir une difficulté :  1->normal, 2->difficile, 3->extreme"
+              << std::endl;
+    std::cin >> choix;
+
+    return choix;
 }

@@ -14,10 +14,6 @@ Partie::Partie(unsigned int nombreDeJoueurs /*= NB_JOUEURS_PAR_DEFAUT*/,
     objectifNombre(objectifNombre), difficulte(difficulte), numeroDeTour(0),
     choixDuTypeDePartie(choixDuTypeDePartie), ihm(new Ihm())
 {
-    for(size_t i = 0; i < nombreDeJoueurs; i++)
-    {
-        joueurs.push_back(new Joueur());
-    }
 }
 
 Partie::~Partie()
@@ -33,39 +29,62 @@ Partie::~Partie()
 
 void Partie::jouer()
 {
+    ihm->afficherMenuPrincipal();
+    choixPartie(ihm->entrerChoixTypePartie());
+
+    if(getChoixDuTypeDePartie() == 1)
+    {
+        creerJoueurEtJoueur();
+    }
+    else if(getChoixDuTypeDePartie() == 2)
+    {
+        creerJoueurEtBot();
+    }
+
     do
     {
-        ihm->afficherMenuPrincipal();
-        choixPartie(ihm->entrerChoixTypePartie());
+        int difficulte = ihm->choisirDifficulte();
         if(getChoixDuTypeDePartie() == 1)
         {
-            creerJoueurEtJoueur();
             for(std::list<Joueur*>::iterator joueur = joueurs.begin();
                 joueur != joueurs.end();
                 joueur++)
             {
+                (*joueur)->setCompteurDePoint(0);
                 (*joueur)->setNomduJoueur(ihm->rentrerNomDuJoueur());
             }
-            quiCommence();
-            for(std::list<Joueur*>::iterator joueur = joueurs.begin();
-                joueur != joueurs.end();
-                joueur++)
+
+            switch(difficulte)
             {
-                delete *joueur;
+                case 1:
+                    quiCommence();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
             }
         }
         else if(getChoixDuTypeDePartie() == 2)
         {
-            creerJoueurEtBot();
-            quiCommence();
             for(std::list<Joueur*>::iterator joueur = joueurs.begin();
                 joueur != joueurs.end();
                 joueur++)
             {
-                delete *joueur;
+                (*joueur)->setCompteurDePoint(0);
+            }
+
+            switch(difficulte)
+            {
+                case 1:
+                    quiCommence();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
             }
         }
-
     } while(CONSTANTE_BOUCLE_INFINI);
 }
 
@@ -85,7 +104,8 @@ void Partie::quiCommence()
 
     while(tamponJoueur[0] == tamponJoueur[1])
     {
-        tamponJoueur.erase(tamponJoueur.begin(), tamponJoueur.begin() + 2);
+        tamponJoueur.erase(tamponJoueur.begin(),
+                           tamponJoueur.begin() + tamponJoueur.size());
 
         for(std::list<Joueur*>::iterator joueur = joueurs.begin();
             joueur != joueurs.end();
@@ -221,11 +241,6 @@ void Partie::choixPartie(unsigned int choixDuJoueur)
 
 void Partie::creerJoueurEtBot()
 {
-    for(size_t i = 0; i < 2; i++)
-    {
-        joueurs.pop_back();
-    }
-
     for(size_t i = 0; i < 1; i++)
     {
         joueurs.push_back(new Joueur());

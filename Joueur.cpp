@@ -49,6 +49,12 @@ void Joueur::setNomduJoueur(const std::string& nomDuJoueur)
 int Joueur::lancerDes(int n)
 {
     des[n]->lancerDe();
+#ifdef DEBUG_JOUEUR
+
+    std::cout << __PRETTY_FUNCTION__
+              << " valeur Dé : " << this->des[n]->getValeurDe() << std::endl;
+
+#endif
     if(n == 0)
     {
         return 0;
@@ -57,15 +63,6 @@ int Joueur::lancerDes(int n)
     {
         lancerDes(n - 1);
     }
-#ifdef DEBUG_JOUEUR
-    for(size_t i = 0; i < des.size(); i++)
-    {
-        std::cout << __PRETTY_FUNCTION__
-                  << " valeur Dé : " << this->des[i]->getValeurDe()
-                  << std::endl;
-    }
-
-#endif
 }
 
 unsigned int Joueur::getDes(int numeroDe) const
@@ -155,4 +152,9 @@ bool Joueur::identifierCombinaisonSuite()
         return true;
     }
     return false;
+}
+
+void Joueur::setCompteurDePoint(const unsigned int point)
+{
+    this->compteurDePoints = point;
 }
