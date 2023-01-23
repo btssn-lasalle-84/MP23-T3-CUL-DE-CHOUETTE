@@ -18,6 +18,7 @@ class Ihm
     ~Ihm();
 
     void         afficherRegle() const;
+    void         afficherDifficulte() const;
     void         afficherMenuPrincipal() const;
     std::string  rentrerNomDuJoueur() const;
     void         afficherGagnant(const std::string& nomDujoueur,
@@ -31,10 +32,12 @@ class Ihm
     void         afficherScoreDuJoueur(const Joueur& joueur) const;
     void         afficherLesDes(unsigned int des0,
                                 unsigned int des1,
-                                unsigned int des2);
-    void         afficherLanceDe(unsigned int de);
+                                unsigned int des2) const;
+    void         afficherLanceDe(unsigned int de) const;
     unsigned int entrerChoixTypePartie();
-    void         afficherJoueur(const std::string& nomJoueur);
+    void         afficherJoueur(const std::string& nomJoueur) const;
+    unsigned int choisirDifficulte();
+    void         afficherLancerDeQuiCommence() const;
 };
 
 #endif // IHM_H

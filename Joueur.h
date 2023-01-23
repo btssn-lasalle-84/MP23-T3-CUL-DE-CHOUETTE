@@ -40,8 +40,9 @@ class Joueur
     unsigned int    getDes(int numeroDe) const;
     unsigned int    getScorelance() const;
     void            setNomduJoueur(const std::string& nomDuJoueur);
-    void            setDe(unsigned int valeur);
+    void            setCompteurDePoint(const unsigned int point);
     TypeCombinaison identifierCombinaison();
+    TypeCombinaison identifierCombinaisonExtreme();
 };
 
 #endif

@@ -110,6 +110,19 @@ S’il y a plusieurs joueurs qui ont fait le plus grand score, ils recommencent 
 )"<< std::endl;
 }
 
+void Ihm::afficherDifficulte() const
+{
+    std::cout << std::endl;
+    std::cout
+      << "Normal -> atteindre 343 points avec toutes les combinaisons activé"
+      << std::endl
+      << "Difficile -> atteindre 543 points. Pas de combinaison pas de points"
+      << std::endl
+      << "Extreme -> atteindre 543 points. Pas de combinaison pas de points, "
+         "et la chouette est désactivé"
+      << std::endl;
+}
+
 void Ihm::afficherMenuPrincipal() const
 {
     std::cout << "-----Bienvenue sur le jeu du Cul De Chouette ! Version "
@@ -122,11 +135,16 @@ void Ihm::afficherMenuPrincipal() const
         std::cout << "Si vous souhaitez quitter, Entrez (2)" << std::endl;
         std::cout << "Si vous souhaitez voir les règles, Entrez (3)"
                   << std::endl;
+        std::cout << "Si vous voulez voir les difficulté, Entrez 4"
+                  << std::endl;
         std::cout << "Votre réponse : ";
         std::cin >> choix;
 
         switch(choix)
         {
+            case 4:
+                afficherDifficulte();
+                break;
             case 3:
                 afficherRegle();
                 break;
@@ -153,7 +171,7 @@ void Ihm::afficherGagnant(const std::string& nomDujoueur,
 {
     std::cout << "Le gagnant est : " << nomDujoueur << " en " << nombreDeTour
               << " coups."
-              << " Avec un score de : " << score << "coups, Bravo a lui ! \n"
+              << " Avec un score de : " << score << ", Bravo a lui ! \n"
               << std::endl;
 }
 
@@ -230,7 +248,7 @@ void Ihm::afficherScoreDuJoueur(const Joueur& joueur) const
 
 void Ihm::afficherLesDes(unsigned int des0,
                          unsigned int des1,
-                         unsigned int des2)
+                         unsigned int des2) const
 {
     std::vector<unsigned int> lesDes;
     lesDes.push_back(des0);
@@ -319,7 +337,7 @@ void Ihm::afficherLesDes(unsigned int des0,
     std::cout << "dé n° " << 3 << " = " << des2 << "\n" << std::endl;
 }
 
-void Ihm::afficherLanceDe(unsigned int de)
+void Ihm::afficherLanceDe(unsigned int de) const
 {
     switch(de)
     {
@@ -413,7 +431,22 @@ unsigned int Ihm::entrerChoixTypePartie()
         return 2;
 }
 
-void Ihm::afficherJoueur(const std::string& nomJoueur)
+void Ihm::afficherJoueur(const std::string& nomJoueur) const
 {
     std::cout << "joueur : " << nomJoueur << std::endl;
+}
+
+unsigned int Ihm::choisirDifficulte()
+{
+    int choix = 0;
+    std::cout << "Choisir une difficulté :  1->normal, 2->difficile, 3->extreme"
+              << std::endl;
+    std::cin >> choix;
+
+    return choix;
+}
+
+void Ihm::afficherLancerDeQuiCommence() const
+{
+    std::cout << std::endl << " Lancer pour savoir qui commence !" << std::endl;
 }
