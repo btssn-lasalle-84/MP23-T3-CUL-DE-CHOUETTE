@@ -36,16 +36,13 @@ class Joueur
     ~Joueur();
     unsigned int    getScore() const;
     std::string     getNomJoueur() const;
-    void            lancerDes();
-    void            lancerDe();
-    unsigned int    getDes0() const;
-    unsigned int    getDes1() const;
-    unsigned int    getDes2() const;
+    int             lancerDes(int n);
+    unsigned int    getDes(int numeroDe) const;
     unsigned int    getScorelance() const;
     void            setNomduJoueur(const std::string& nomDuJoueur);
-    void            setDe(unsigned int valeur);
-    void            trierDes();
+    void            setCompteurDePoint(const unsigned int point);
     TypeCombinaison identifierCombinaison();
+    TypeCombinaison identifierCombinaisonExtreme();
 };
 
 #endif

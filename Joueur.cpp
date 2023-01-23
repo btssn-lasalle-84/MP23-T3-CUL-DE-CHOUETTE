@@ -4,6 +4,7 @@
 #include <iostream>
 #endif
 #include <cmath>
+#include <algorithm>
 
 Joueur::Joueur(const std::string& nomDuJoueur) :
     nomDuJoueur(nomDuJoueur), scoreLance(0), compteurDePoints(NOMBRE_DE_POINTS)
@@ -45,56 +46,28 @@ void Joueur::setNomduJoueur(const std::string& nomDuJoueur)
     this->nomDuJoueur = nomDuJoueur;
 }
 
-void Joueur::lancerDes()
+int Joueur::lancerDes(int n)
 {
-    for(size_t i = 0; i < des.size(); i++)
-    {
-        des[i]->lancerDe();
-    }
+    des[n]->lancerDe();
 #ifdef DEBUG_JOUEUR
-    for(size_t i = 0; i < des.size(); i++)
-    {
-        std::cout << __PRETTY_FUNCTION__
-                  << "valeur Dé : " << this->des[i]->getValeurDe() << std::endl;
-    }
+
+    std::cout << __PRETTY_FUNCTION__
+              << " valeur Dé : " << this->des[n]->getValeurDe() << std::endl;
 
 #endif
-}
-
-void Joueur::lancerDe()
-{
-    des[0]->lancerDe();
-}
-
-unsigned int Joueur::getDes0() const
-{
-    return des[0]->getValeurDe();
-}
-
-unsigned int Joueur::getDes1() const
-{
-    return des[1]->getValeurDe();
-}
-
-unsigned int Joueur::getDes2() const
-{
-    return des[2]->getValeurDe();
-}
-
-void Joueur::trierDes()
-{
-    for(size_t i = 0; i < des.size(); i++)
+    if(n == 0)
     {
-        for(size_t j = i + 1; j < des.size(); j++)
-        {
-            if(des[j]->getValeurDe() < des[i]->getValeurDe())
-            {
-                unsigned int tampon = des[i]->getValeurDe();
-                des[i]->setDe(des[j]->getValeurDe());
-                des[j]->setDe(tampon);
-            }
-        }
+        return 0;
     }
+    else
+    {
+        lancerDes(n - 1);
+    }
+}
+
+unsigned int Joueur::getDes(int numeroDe) const
+{
+    return des[numeroDe]->getValeurDe();
 }
 
 unsigned int Joueur::getScorelance() const
@@ -105,7 +78,14 @@ unsigned int Joueur::getScorelance() const
 TypeCombinaison Joueur::identifierCombinaison()
 {
     this->scoreLance = 0;
-    this->trierDes();
+    std::sort(des.begin(), des.end(), TriAscendant());
+#ifdef DEBUG_JOUEUR
+    for(size_t i = 0; i < des.size(); i++)
+    {
+        std::cout << __PRETTY_FUNCTION__ << " dé numero " << i
+                  << " : valeur = " << this->des[i]->getValeurDe() << std::endl;
+    }
+#endif
     if(identifierCombinaisonCulDeChouette())
         return TypeCombinaison::CulDeChouette;
     else if(identifierCombinaisonSuite())
@@ -126,13 +106,34 @@ TypeCombinaison Joueur::identifierCombinaison()
     }
 }
 
+TypeCombinaison Joueur::identifierCombinaisonExtreme()
+{
+    this->scoreLance = 0;
+    std::sort(des.begin(), des.end(), TriAscendant());
+#ifdef DEBUG_JOUEUR
+    for(size_t i = 0; i < des.size(); i++)
+    {
+        std::cout << __PRETTY_FUNCTION__ << " dé numero " << i
+                  << " : valeur = " << this->des[i]->getValeurDe() << std::endl;
+    }
+#endif
+    if(identifierCombinaisonCulDeChouette())
+        return TypeCombinaison::CulDeChouette;
+    else if(identifierCombinaisonSuite())
+        return TypeCombinaison::Suite;
+    else if(identifierCombinaisonVelute())
+        return TypeCombinaison::Velute;
+    else
+        return TypeCombinaison::Aucune;
+}
+
 bool Joueur::identifierCombinaisonChouette()
 {
     if(this->des[1]->getValeurDe() == this->des[0]->getValeurDe() ||
        this->des[1]->getValeurDe() == this->des[2]->getValeurDe())
     {
-        this->scoreLance = pow(this->des[1]->getValeurDe(), 2);
-        this->compteurDePoints += pow(this->des[1]->getValeurDe(), 2);
+        this->scoreLance = (pow(this->des[1]->getValeurDe(), 2) + 10);
+        this->compteurDePoints += (pow(this->des[1]->getValeurDe(), 2) + 10);
         return true;
     }
     return false;
@@ -172,4 +173,9 @@ bool Joueur::identifierCombinaisonSuite()
         return true;
     }
     return false;
+}
+
+void Joueur::setCompteurDePoint(const unsigned int point)
+{
+    this->compteurDePoints = point;
 }

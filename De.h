@@ -3,6 +3,8 @@
 
 #include <string>
 
+//#define DEBUG_DE
+
 #define NOMBRE_DE_FACES 6
 #define INDEFINI        0
 #define NOMBRE_MIN_DE   1
@@ -20,7 +22,15 @@ class De
 
     int  getValeurDe() const;
     void lancerDe();
-    void setDe(unsigned int valeur);
+};
+
+class TriAscendant
+{
+  public:
+    bool operator()(De* a, De* b) const
+    {
+        return (a->getValeurDe() < b->getValeurDe());
+    }
 };
 
 #endif // !DES_H

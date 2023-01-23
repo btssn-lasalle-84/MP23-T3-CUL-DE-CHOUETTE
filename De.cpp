@@ -26,8 +26,9 @@ De::~De()
 int De::getValeurDe() const
 {
 #ifdef DEBUG_DE
-    std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__ << " " << this
-              << " valeur = " << valeur << std::endl;
+    /*std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__ << " " <<
+       this
+              << " valeur = " << valeur << std::endl;*/
 #endif
     return this->valeur;
 }
@@ -39,9 +40,4 @@ void De::lancerDe()
     static std::uniform_int_distribution<int> generer(NOMBRE_MIN_DE,
                                                       NOMBRE_MAX_DE);
     valeur = generer(nombre);
-}
-
-void De::setDe(unsigned int valeur)
-{
-    this->valeur = valeur;
 }
