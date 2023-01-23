@@ -322,7 +322,7 @@ void Partie::creerJoueurEtJoueur()
     }
 }
 
-unsigned int Partie::getChoixDuTypeDePartie()
+unsigned int Partie::getChoixDuTypeDePartie() const
 {
     return choixDuTypeDePartie;
 }

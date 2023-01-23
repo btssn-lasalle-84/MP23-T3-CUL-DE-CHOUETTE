@@ -135,7 +135,7 @@ void Ihm::afficherMenuPrincipal() const
         std::cout << "Si vous souhaitez quitter, Entrez (2)" << std::endl;
         std::cout << "Si vous souhaitez voir les règles, Entrez (3)"
                   << std::endl;
-        std::cout << "Si vous voulez voir les difficulté, Entrez 4"
+        std::cout << "Si vous voulez voir les difficulté, Entrez (4)"
                   << std::endl;
         std::cout << "Votre réponse : ";
         std::cin >> choix;
@@ -448,5 +448,5 @@ unsigned int Ihm::choisirDifficulte()
 
 void Ihm::afficherLancerDeQuiCommence() const
 {
-    std::cout << std::endl << " Lancer pour savoir qui commence !" << std::endl;
+    std::cout << std::endl << "Lancer pour savoir qui commence !" << std::endl;
 }
