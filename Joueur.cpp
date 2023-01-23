@@ -106,6 +106,27 @@ TypeCombinaison Joueur::identifierCombinaison()
     }
 }
 
+TypeCombinaison Joueur::identifierCombinaisonExtreme()
+{
+    this->scoreLance = 0;
+    std::sort(des.begin(), des.end(), TriAscendant());
+#ifdef DEBUG_JOUEUR
+    for(size_t i = 0; i < des.size(); i++)
+    {
+        std::cout << __PRETTY_FUNCTION__ << " dé numero " << i
+                  << " : valeur = " << this->des[i]->getValeurDe() << std::endl;
+    }
+#endif
+    if(identifierCombinaisonCulDeChouette())
+        return TypeCombinaison::CulDeChouette;
+    else if(identifierCombinaisonSuite())
+        return TypeCombinaison::Suite;
+    else if(identifierCombinaisonVelute())
+        return TypeCombinaison::Velute;
+    else
+        return TypeCombinaison::Aucune;
+}
+
 bool Joueur::identifierCombinaisonChouette()
 {
     if(this->des[1]->getValeurDe() == this->des[0]->getValeurDe() ||

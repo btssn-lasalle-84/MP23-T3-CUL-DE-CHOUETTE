@@ -4,6 +4,7 @@
 #ifdef DEBUG_PARTIE
 #include <iostream>
 #endif
+#include <iostream>
 
 Partie::Partie(unsigned int nombreDeJoueurs /*= NB_JOUEURS_PAR_DEFAUT*/,
                Difficulte   difficulte /*= Difficulte::Normal*/,
@@ -43,7 +44,7 @@ void Partie::jouer()
 
     do
     {
-        int difficulte = ihm->choisirDifficulte();
+        setDifficulte(ihm->choisirDifficulte());
         if(getChoixDuTypeDePartie() == 1)
         {
             for(std::list<Joueur*>::iterator joueur = joueurs.begin();
@@ -53,17 +54,7 @@ void Partie::jouer()
                 (*joueur)->setCompteurDePoint(0);
                 (*joueur)->setNomduJoueur(ihm->rentrerNomDuJoueur());
             }
-
-            switch(difficulte)
-            {
-                case 1:
-                    quiCommence();
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-            }
+            quiCommence();
         }
         else if(getChoixDuTypeDePartie() == 2)
         {
@@ -73,17 +64,7 @@ void Partie::jouer()
             {
                 (*joueur)->setCompteurDePoint(0);
             }
-
-            switch(difficulte)
-            {
-                case 1:
-                    quiCommence();
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-            }
+            quiCommence();
         }
     } while(CONSTANTE_BOUCLE_INFINI);
 }
@@ -131,11 +112,27 @@ void Partie::quiCommence()
 
 bool Partie::aGagne(unsigned int const& score)
 {
-    if(score >= OBJECTIF_PAR_DEFAUT)
+    switch(getDifficulte())
     {
-        return true;
+        case Difficulte::Normal:
+            if(score >= OBJECTIF_PAR_DEFAUT)
+            {
+                return true;
+            }
+            return false;
+            break;
+
+        case Difficulte::Difficile || Difficulte::Extreme:
+            if(score >= OBJECTIF_DIFFICILE_EXTREME)
+            {
+                return true;
+            }
+            return false;
+            break;
+
+        default:
+            break;
     }
-    return false;
 }
 
 void Partie::joueur1Commence()
@@ -152,10 +149,52 @@ void Partie::joueur1Commence()
             ihm->afficherLesDes((*joueur)->getDes(0),
                                 (*joueur)->getDes(1),
                                 (*joueur)->getDes(2));
-            ihm->afficherCombinaison((*joueur)->identifierCombinaison());
-            ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
-                                    (*joueur)->getScore(),
-                                    (*joueur)->getScorelance());
+
+            switch(getDifficulte())
+            {
+#ifdef DEBUG_PARTIE
+                std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
+                          << "Difficulté : " << getDifficulte() << std::endl;
+#endif
+                case Difficulte::Normal || Difficulte::Difficile:
+                    ihm->afficherCombinaison(
+                      (*joueur)->identifierCombinaison());
+                    ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
+                                            (*joueur)->getScore(),
+                                            (*joueur)->getScorelance());
+                    this->numeroDeTour += 1;
+                    partieTerminee = this->aGagne((*joueur)->getScore());
+
+                    if(partieTerminee)
+                    {
+                        ihm->afficherGagnant((*joueur)->getNomJoueur(),
+                                             this->numeroDeTour,
+                                             (*joueur)->getScore());
+                        break;
+                    }
+                    break;
+
+                case Difficulte::Extreme:
+                    ihm->afficherCombinaison(
+                      (*joueur)->identifierCombinaisonExtreme());
+                    ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
+                                            (*joueur)->getScore(),
+                                            (*joueur)->getScorelance());
+                    this->numeroDeTour += 1;
+                    partieTerminee = this->aGagne((*joueur)->getScore());
+
+                    if(partieTerminee)
+                    {
+                        ihm->afficherGagnant((*joueur)->getNomJoueur(),
+                                             this->numeroDeTour,
+                                             (*joueur)->getScore());
+                        break;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
 #ifdef DEBUG_PARTIE
             std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
                       << " Joueur = " << *joueur << std::endl;
@@ -164,15 +203,6 @@ void Partie::joueur1Commence()
             std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
                       << " score : " << (*joueur)->getScore() << std::endl;
 #endif
-            this->numeroDeTour += 1;
-            partieTerminee = this->aGagne((*joueur)->getScore());
-            if(partieTerminee)
-            {
-                ihm->afficherGagnant((*joueur)->getNomJoueur(),
-                                     this->numeroDeTour,
-                                     (*joueur)->getScore());
-                break;
-            }
         }
     }
 }
@@ -191,10 +221,52 @@ void Partie::joueur2Commence()
             ihm->afficherLesDes((*joueur)->getDes(0),
                                 (*joueur)->getDes(1),
                                 (*joueur)->getDes(2));
-            ihm->afficherCombinaison((*joueur)->identifierCombinaison());
-            ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
-                                    (*joueur)->getScore(),
-                                    (*joueur)->getScorelance());
+
+            switch(getDifficulte())
+            {
+#ifdef DEBUG_PARTIE
+                std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
+                          << "Difficulté : " << getDifficulte() << std::endl;
+#endif
+                case Difficulte::Normal || Difficulte::Difficile:
+                    ihm->afficherCombinaison(
+                      (*joueur)->identifierCombinaison());
+                    ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
+                                            (*joueur)->getScore(),
+                                            (*joueur)->getScorelance());
+                    this->numeroDeTour += 1;
+                    partieTerminee = this->aGagne((*joueur)->getScore());
+
+                    if(partieTerminee)
+                    {
+                        ihm->afficherGagnant((*joueur)->getNomJoueur(),
+                                             this->numeroDeTour,
+                                             (*joueur)->getScore());
+                        break;
+                    }
+                    break;
+
+                case Difficulte::Extreme:
+                    ihm->afficherCombinaison(
+                      (*joueur)->identifierCombinaisonExtreme());
+                    ihm->afficherScoreTotal((*joueur)->getNomJoueur(),
+                                            (*joueur)->getScore(),
+                                            (*joueur)->getScorelance());
+                    this->numeroDeTour += 1;
+                    partieTerminee = this->aGagne((*joueur)->getScore());
+
+                    if(partieTerminee)
+                    {
+                        ihm->afficherGagnant((*joueur)->getNomJoueur(),
+                                             this->numeroDeTour,
+                                             (*joueur)->getScore());
+                        break;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
 #ifdef DEBUG_PARTIE
             std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
                       << " Joueur = " << *joueur << std::endl;
@@ -203,15 +275,6 @@ void Partie::joueur2Commence()
             std::cout << __PRETTY_FUNCTION__ << " ligne n° " << __LINE__
                       << " score : " << (*joueur)->getScore() << std::endl;
 #endif
-            this->numeroDeTour += 1;
-            partieTerminee = this->aGagne((*joueur)->getScore());
-            if(partieTerminee)
-            {
-                ihm->afficherGagnant((*joueur)->getNomJoueur(),
-                                     this->numeroDeTour,
-                                     (*joueur)->getScorelance());
-                break;
-            }
         }
     }
 }
@@ -270,4 +333,26 @@ void Partie::creerJoueurEtJoueur()
 unsigned int Partie::getChoixDuTypeDePartie()
 {
     return choixDuTypeDePartie;
+}
+
+void Partie::setDifficulte(unsigned int difficulte)
+{
+    switch(difficulte)
+    {
+        case 1:
+            this->difficulte = Difficulte::Normal;
+            break;
+        case 2:
+            this->difficulte = Difficulte::Difficile;
+            break;
+        case 3:
+            this->difficulte = Difficulte::Extreme;
+        default:
+            break;
+    }
+}
+
+Difficulte Partie::getDifficulte() const
+{
+    return this->difficulte;
 }
