@@ -77,6 +77,7 @@ void Partie::quiCommence()
         joueur++)
     {
         (*joueur)->lancerDes(0);
+        ihm->afficherLancerDeQuiCommence();
         ihm->afficherQuiLance((*joueur)->getNomJoueur());
         ihm->afficherLanceDe((*joueur)->getDes(0));
         tamponJoueur.push_back((*joueur)->getDes(0));

@@ -445,3 +445,8 @@ unsigned int Ihm::choisirDifficulte()
 
     return choix;
 }
+
+void Ihm::afficherLancerDeQuiCommence() const
+{
+    std::cout << std::endl << " Lancer pour savoir qui commence !" << std::endl;
+}
