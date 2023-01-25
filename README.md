@@ -21,6 +21,9 @@ Ceci est un projet de 2 étudiant de dernière année de BTS SN développé en C
 | Jouer une partie                     | X   |
 | Saisir le nom d'un joueur            | X   |
 | Afficher le déroulement d'une partie | X   |
+| Jouer plusieurs parties              | X   |     
+| Choisir un niveau de difficulté      | X   |
+| Jouer contre un ordinateur           | X   |
 
 # Informations
 
@@ -31,10 +34,10 @@ Ecrit par :
 
 Version :
 
-- 1.1
+- 2.0
 
 Date :
 
-- 13 / 01 / 2023
+- 23 / 01 / 2023
 
 ---
