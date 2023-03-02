@@ -120,16 +120,13 @@ bool Partie::aGagne(unsigned int const& score)
                 return true;
             }
             return false;
-            break;
-
-        case Difficile || Extreme:
+        case Difficile:
+        case Extreme:
             if(score >= OBJECTIF_DIFFICILE_EXTREME)
             {
                 return true;
             }
             return false;
-            break;
-
         default:
             break;
     }

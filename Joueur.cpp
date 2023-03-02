@@ -50,10 +50,8 @@ int Joueur::lancerDes(int n)
 {
     des[n]->lancerDe();
 #ifdef DEBUG_JOUEUR
-
     std::cout << __PRETTY_FUNCTION__
               << " valeur Dé : " << this->des[n]->getValeurDe() << std::endl;
-
 #endif
     if(n == 0)
     {
@@ -63,6 +61,7 @@ int Joueur::lancerDes(int n)
     {
         lancerDes(n - 1);
     }
+    return 1;
 }
 
 unsigned int Joueur::getDes(int numeroDe) const
