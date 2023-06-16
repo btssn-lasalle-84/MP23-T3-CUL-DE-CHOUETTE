@@ -84,6 +84,105 @@ Intégration avec Github :
 | Choisir un niveau de difficulté      | X   | |
 | Jouer contre un ordinateur           | X   | |
 
+## Exemple d'une partie 
+ -----Bienvenue sur le jeu du Cul De Chouette ! Version 2-----
+ 
+ Pouvons nous commencez ? 
+
+Si vous êtes prêt à jouer, Entrez (1)
+Si vous souhaitez quitter, Entrez (2)
+Si vous souhaitez voir les règles, Entrez (3)
+Si vous voulez voir les difficulté, Entrez (4)
+Votre réponse : 1
+
+Types de Partie : Si vous faites un autre choix que 1 ou 2, par défaut on lance une partie contre un BOT
+
+Partie 1 vs 1 = (1) / Partie 1 vs BOT = (2) : 1
+Choisir une difficulté :  1->normal, 2->difficile, 3->extreme
+1
+
+Entrez le nom du joueur : matthieu
+
+Entrez le nom du joueur : celian
+
+ Lancer pour savoir qui commence !
+matthieu : C'est à votre tour !
+
+Pour lancer les dés, appuyez sur (1) / Pour quittez, appuyez sur (2) : 1
+
+matthieu lance les dès !
+
+
+                                ______
+                               /O    O/\
+                              /      /O \
+                             /O____O/    \
+                             \O    O\    /
+                              \O    O\ O/
+                               \O____O\/
+                                        
+
+Lancer pour savoir qui commence !
+celian : C'est à votre tour !
+
+Pour lancer les dés, appuyez sur (1) / Pour quittez, appuyez sur (2) : 1
+
+celian lance les dès !
+
+
+                                ______
+                              /     O/\
+                             /      /  \
+                            /O____ /    \
+                            \O    O\  O /
+                             \O    O\  /
+                              \O____O\/
+                                        
+celian : C'est à votre tour !
+
+Pour lancer les dés, appuyez sur (1) / Pour quittez, appuyez sur (2) : 1
+
+celian lance les dès !
+
+
+                                ______
+                              /O    O/\
+                             /   O  /O \
+                            /O____O/    \
+                            \O    O\    /
+                             \O    O\ O/
+                              \O____O\/
+                                        
+
+                                ______
+                               /O    O/\
+                              /O    O/O \
+                             /O____O/    \
+                             \O    O\    /
+                              \      \ O/
+                               \O____O\/
+                                        
+
+                                ______
+                               /      /\
+                              /   O  /O \
+                             /_____ /    \
+                             \O    O\    /
+                              \O    O\ O/
+                               \O____O\/
+                                        
+dé n° 1 = 5
+dé n° 2 = 6
+dé n° 3 = 1
+
+La combinaison réalisée est : Velute
+
+le score de ce lancé est de : 72
+ le score total de celian est de : 72
+
+matthieu : C'est à votre tour !
+ 
+ Etc ...
 ## Auteurs
 
 - Matthieu Salaun <<matthieu.salaun30@gmail.com>>
